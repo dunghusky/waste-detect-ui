@@ -5,9 +5,22 @@
     margin: 0;
     box-sizing: border-box;
     font-family: 'Montserrat', sans-serif;
+    transition: .3 ease;
+    // -webkit-transition: .3 ease;
+    // -moz-transition: .3 ease;
+    // -ms-transition: .3 ease;
+    // -o-transition: .3 ease;
 }
 
 :root{
+    //Dashboard 
+    --PrimaryColor: hsl(94, 59%, 35%);
+    --HoverColor: #bdf094;
+    --TextColor: hsl(240, 1%, 48%)
+    --BgColor: hsl(220, 10%, 94%);
+    --GreyText: rgb(190, 190, 190);
+
+    //Login
     --primaryColor: hsl(94, 55%, 56%);
     --hoverColor: hsl(93, 75%, 76%);
     --paleGreen: hsl(96, 75%, 89%);
