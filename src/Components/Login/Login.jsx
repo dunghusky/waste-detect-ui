@@ -39,7 +39,7 @@ const Login = () => {
         </div>
 
         <form action="" className="form grid">
-          <span>Login status will go here</span>
+          <span className='showMessage'>Login status will go here</span>
 
           <div className="inputDiv">
             <label htmlFor="username">Username</label>
@@ -61,6 +61,8 @@ const Login = () => {
             <span>Login</span>
             <AiOutlineSwapRight className='icon'/>
           </button>
+
+          <a href="/dashboard">Dashboard</a>
 
           <span className='forgotPassword'>
             Forgot your password? <a href="">Click Here</a>
