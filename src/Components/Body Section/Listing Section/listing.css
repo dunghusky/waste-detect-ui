@@ -1,1 +1,60 @@
-/*# sourceMappingURL=listing.css.map */
+:root {
+  --PrimaryColor: hsl(94, 59%, 35%);
+  --textColor: hsl(240, 1%, 48%)
+  //Login
+  --primaryColor: hsl(94, 55%, 56%);
+  --hoverColor: #bdf094;
+  --paleGreen: hsl(96, 75%, 89%);
+  --whiteColor: hsl(0, 0%, 100%);
+  --blackColor: hsl(0, 0%, 18%);
+  --greyText: rgb(190, 190, 190);
+  --bgColor: hsl(220, 10%, 94%);
+  --inputColor: hsl(330, 12%, 97%);
+  --itemCardColor: hsl(120, 5%, 88%);
+  --itemCardHover: hsl(120, 27%, 87%);
+  --biggestFontSize: 2.5rem;
+  --h1FontSize: 1.5rem;
+  --h2FontSize: 1.25rem;
+  --h3FontSize: 1rem;
+  --normalFontSize: .938rem;
+  --smallFontSize: .813rem;
+  --smallestFontSize: .75rem;
+}
+
+.listingSection {
+  flex-basis: 70%;
+}
+.listingSection .heading {
+  width: 100%;
+  justify-content: space-between;
+}
+.listingSection .heading h1 {
+  font-size: var(--h2FontSize);
+  color: var(--blackColor);
+  font-weight: 700;
+}
+.listingSection .heading .btn {
+  border: 1px solid transparent;
+  font-weight: 500;
+}
+.listingSection .heading .btn:hover {
+  border: 1px solid var(--PrimaryColor);
+}
+.listingSection .secContainer {
+  width: 100%;
+  margin: 1rem 0;
+  gap: 1rem;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+.listingSection .secContainer .singleItem {
+  position: relative;
+  width: 150px;
+  height: 170px;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  padding: 1rem;
+  border-radius: 10px;
+  background-color: var(--itemCardColor);
+}/*# sourceMappingURL=listing.css.map */
