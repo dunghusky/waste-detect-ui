@@ -1,15 +1,15 @@
 // import React from 'react'
-import './top.css'
+import '../Top Section/top.css'
 
 import { BiSearchAlt } from "react-icons/bi";
 import { TbMessageDots } from "react-icons/tb";
 import { IoNotificationsOutline } from "react-icons/io5";
 import { BsArrowRightShort } from "react-icons/bs";
-// import { BsQuestionCircle } from "react-icons/bs";
+import { BsQuestionCircle } from "react-icons/bs";
 
 import img from "../../../Assets/user1.jpg"
 import img2 from "../../../Assets/cay_den.png"
-import video from "../../../LoginAssets/video.mp4"
+import video from "../../../../../LoginAssets/video.mp4"
 
 function Top() {
   return (
@@ -73,7 +73,7 @@ function Top() {
               <img src={img2} alt="Image Name" />
             </div>
 
-            {/* <div className="sideBarCard">
+            <div className="sideBarCard">
               <BsQuestionCircle className='icon'/>
               <div className="cardContent">
                 <div className="circle1"></div>
@@ -84,7 +84,7 @@ function Top() {
                 
                 <button className='btn'>Go to help center</button>
               </div>
-            </div> */}
+            </div>
           </div>
         </div>
       </div>

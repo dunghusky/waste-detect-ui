@@ -1,8 +1,8 @@
 // import React from 'react'
-import './body.css'
-import Top from './Top Section/Top'
-import Listing from './Listing Section/Listing'
-import Activity from './Activity Section/Activity'
+import '../Body Section/body.css'
+import Top from '../Body Section/Top Section/Top'
+import Listing from '../Body Section/Listing Section/Listing'
+import Activity from '../Body Section/Activity Section/Activity'
 
 function Body() {
   return (

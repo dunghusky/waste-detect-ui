@@ -1,13 +1,14 @@
-// import React from 'react'
+import '../Dashboard/Dashboard.css'
+import Sidebar from '../Dashboard/Components/SideBar Section/Sidebar'
+import Body from '../Dashboard/Components/Body Section/Body'
 
-const Dashboard = () => {
+function Dashboard() {
   return (
-    <div>
-        This is Dashboard Page
-        <br />
-        <a href="/">Log out</a>
+    <div className='container'>
+       <Sidebar/>
+       <Body/>
     </div>
   )
 }
 
-export default Dashboard;
+export default Dashboard

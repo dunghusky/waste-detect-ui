@@ -1,5 +1,5 @@
 // import React from 'react'
-import './activity.css'
+import '../Activity Section/activity.css'
 import { BsArrowRightShort } from "react-icons/bs";
 
 import img from "../../../Assets/user2.jpg";

@@ -1,5 +1,5 @@
 // import React from 'react'
-import './listing.css'
+import '../Listing Section/listing.css'
 
 import { BsArrowRightShort } from "react-icons/bs";
 import { AiFillHeart } from "react-icons/ai";

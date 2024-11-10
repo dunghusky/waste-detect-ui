@@ -130,24 +130,17 @@ img, video{
     width: 100%;
     margin: auto;
     border-radius: 10px;
-    // -webkit-border-radius: 10px;
-    // -moz-border-radius: 10px;
-    // -ms-border-radius: 10px;
-    // -o-border-radius: 10px;
     overflow: hidden;
-    box-shadow: 0 7px 50px rgb(214, 223, 213);
+    // box-shadow: 0 7px 50px rgb(214, 223, 213);
 
     .container{
         height: 75vh;
-        width: 60;
+        width: 100%;
         margin: auto;
         justify-content: space-between;
         border-radius: 10px;
-        // -webkit-border-radius: 10px;
-        // -moz-border-radius: 10px;
-        // -ms-border-radius: 10px;
-        // -o-border-radius: 10px;
         background: hsl(0, 0%, 91%);
+        box-shadow: 0 7px 7px rgb(214, 223, 213);
 
         .videoDiv{
             position: relative;
@@ -235,8 +228,8 @@ img, video{
                         background: var(--hoverColor);
                         color: var(--blackColor);
                     }
-}
-}
+                }
+            }
         }
 
         .formDiv{
@@ -294,10 +287,6 @@ img, video{
                         padding: 1rem;
                         background: var(--inputColor);
                         border-radius: 10px;
-                        // -webkit-border-radius: 10px;
-                        // -moz-border-radius: 10px;
-                        // -ms-border-radius: 10px;
-                        // -o-border-radius: 10px;
                     }
                 }
 
