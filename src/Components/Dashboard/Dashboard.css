@@ -18,6 +18,7 @@
   --blackColor: hsl(0, 0%, 18%);
   --greyText: rgb(190, 190, 190);
   --bgColor: hsl(220, 10%, 94%);
+  --bgColor_1: rgb(249, 248, 248);
   --inputColor: hsl(330, 12%, 97%);
   --biggestFontSize: 2.5rem;
   --h1FontSize: 1.5rem;
@@ -95,7 +96,7 @@ body {
   display: flex;
   align-items: center;
   justify-content: center;
-  background: var(--bgColor);
+  background: var(--bgColor_1);
   overflow: hidden;
   border-radius: 1rem;
   box-shadow: 2px 2px 8px var(--greyText);
@@ -104,4 +105,26 @@ body {
 /*scroll*/
 ::-webkit-scrollbar {
   display: none;
-}/*# sourceMappingURL=App_dashboard.css.map */
+}
+
+@media screen and (max-width: 990px) {
+  .heading {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 1rem;
+  }
+}
+@media screen and (max-width: 918px) {
+  .heading {
+    flex-direction: row;
+    align-items: center;
+    gap: 1rem;
+  }
+}
+@media screen and (max-width: 500px) {
+  .heading {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 1rem;
+  }
+}/*# sourceMappingURL=Dashboard.css.map */

@@ -108,15 +108,15 @@ img, video {
   margin: auto;
   border-radius: 10px;
   overflow: hidden;
-  box-shadow: 0 7px 50px rgb(214, 223, 213);
 }
 .loginPage .container {
   height: 75vh;
-  width: 60;
+  width: 100%;
   margin: auto;
   justify-content: space-between;
   border-radius: 10px;
   background: hsl(0, 0%, 91%);
+  box-shadow: 0 7px 7px rgb(214, 223, 213);
 }
 .loginPage .container .videoDiv {
   position: relative;

@@ -1,7 +1,7 @@
 // import React from 'react'
-import './sidebar.css'
+import '../SideBar Section/sidebar.css'
 
-import logo from '../../LoginAssets/logo.png'
+import logo from '../../../../LoginAssets/logo.png'
 
 import { IoMdSpeedometer } from "react-icons/io";
 import { MdDeliveryDining } from "react-icons/md";
@@ -12,6 +12,7 @@ import { BiTrendingUp } from "react-icons/bi";
 import { MdOutlinePermContactCalendar } from "react-icons/md";
 import { BsCreditCard2Front } from "react-icons/bs";
 import { BsQuestionCircle } from "react-icons/bs";
+// import {AiOutlineSwapRight} from "react-icons/ai";
 
 const Sidebar = () => {
   return (
@@ -109,6 +110,13 @@ const Sidebar = () => {
           </li>
         </ul>
       </div>
+      
+      {/* <div className='logoutDiv'>
+        <button type='submit' className='btn flex'>
+          <AiOutlineSwapRight className='icon'/>
+          <span>Log Out</span>
+        </button>
+      </div> */}
 
       <div className="sideBarCard">
         <BsQuestionCircle className='icon'/>

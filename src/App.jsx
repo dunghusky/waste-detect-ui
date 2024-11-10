@@ -34,3 +34,8 @@ function App() {
 }
 
 export default App
+
+
+// ::-webkit-scrollbar{
+//     display: none;
+// }
