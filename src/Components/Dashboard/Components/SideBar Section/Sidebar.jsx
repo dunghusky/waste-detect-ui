@@ -12,7 +12,7 @@ import { BiTrendingUp } from "react-icons/bi";
 import { MdOutlinePermContactCalendar } from "react-icons/md";
 import { BsCreditCard2Front } from "react-icons/bs";
 import { BsQuestionCircle } from "react-icons/bs";
-// import {AiOutlineSwapRight} from "react-icons/ai";
+import { BsArrowLeftShort } from "react-icons/bs";
 
 const Sidebar = () => {
   return (
@@ -111,12 +111,12 @@ const Sidebar = () => {
         </ul>
       </div>
       
-      {/* <div className='logoutDiv'>
+      <div className='logoutDiv'>
         <button type='submit' className='btn flex'>
-          <AiOutlineSwapRight className='icon'/>
+          <BsArrowLeftShort className='icon'/>
           <span>Log Out</span>
         </button>
-      </div> */}
+      </div>
 
       <div className="sideBarCard">
         <BsQuestionCircle className='icon'/>

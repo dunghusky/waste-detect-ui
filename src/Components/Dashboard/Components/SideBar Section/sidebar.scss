@@ -96,19 +96,41 @@
         }
     }
 
-    // .logoutDiv{
-    //     .btn{
-    //         background: var(--PrimaryColor);
-    //         width: 90%;
-            
-    //         .icon{
-    //             position: absolute;
-    //             background: var(--whiteColor);
-    //             font-size: 2rem;
-    //             border-radius: 50%;
-    //         }
-    //     }
-    // }
+    .logoutDiv{
+        .btn{
+            background: var(--PrimaryColor);
+            width: 90%;
+            justify-content: center;
+            margin-left: 13px;
+            padding: .8rem;
+            align-items: center;
+            margin: auto;
+            color: var(--whiteColor);
+            justify-content: center;
+            font-size: 15px;
+            gap: .5rem;
+            transition: .3s ease;
+
+            .icon{
+                margin-right: 5px;
+                background: var(--whiteColor);
+                font-size: 1.5rem;
+                color: var(--PrimaryColor);
+                border-radius: 50%;
+                transition: .3s ease;
+            }
+
+            &:hover{
+                background: var(--primaryColor);
+                color: var(--blackColor);
+
+                .icon{
+                    color: var(--blackColor);
+                    transform: translateX(-5px);
+                }
+            }
+        }
+    }
 
     .sideBarCard{
         width: 100%;
@@ -224,6 +246,13 @@
                 }
             }
         }
+
+        // .logoutDiv{
+        //     justify-content: center;
+        //     .icon{
+        //         font-size: var(--h1FontSize);
+        //     }
+        // }
     }
 }
 

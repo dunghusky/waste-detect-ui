@@ -294,10 +294,6 @@ img, video{
                     padding: .8rem;
                     background: var(--primaryColor);
                     border-radius: 10px;
-                    //-webkit-border-radius: 10px;
-                    //-moz-border-radius: 10px;
-                    //-ms-border-radius: 10px;
-                    //-o-border-radius: 10px;
                     color: var(--whiteColor);
                     align-items: center;
                     margin: auto;
@@ -306,18 +302,10 @@ img, video{
                     width: 100%;
                     gap: .5rem;
                     transition: .3s ease;
-                    // -webkit-transition: .3s ease;
-                    // -moz-transition: .3s ease;
-                    // -ms-transition: .3s ease;
-                    // -o-transition: .3s ease;
 
                     .icon{
                         font-size: 25px;
                         transition: .3s ease;
-                        // -webkit-transition: .3s ease;
-                        // -moz-transition: .3s ease;
-                        // -ms-transition: .3s ease;
-                        // -o-transition: .3s ease;
                     }
 
                     &:hover{
