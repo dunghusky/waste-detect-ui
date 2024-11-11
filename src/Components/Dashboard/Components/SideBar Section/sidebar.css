@@ -79,6 +79,36 @@
   height: 100%;
   transition: 0.3s ease;
 }
+.sideBar .logoutDiv .btn {
+  background: var(--PrimaryColor);
+  width: 90%;
+  justify-content: center;
+  margin-left: 13px;
+  padding: 0.8rem;
+  align-items: center;
+  margin: auto;
+  color: var(--whiteColor);
+  justify-content: center;
+  font-size: 15px;
+  gap: 0.5rem;
+  transition: 0.3s ease;
+}
+.sideBar .logoutDiv .btn .icon {
+  margin-right: 5px;
+  background: var(--whiteColor);
+  font-size: 1.5rem;
+  color: var(--PrimaryColor);
+  border-radius: 50%;
+  transition: 0.3s ease;
+}
+.sideBar .logoutDiv .btn:hover {
+  background: var(--primaryColor);
+  color: var(--blackColor);
+}
+.sideBar .logoutDiv .btn:hover .icon {
+  color: var(--blackColor);
+  transform: translateX(-5px);
+}
 .sideBar .sideBarCard {
   width: 100%;
   padding: 1rem;
