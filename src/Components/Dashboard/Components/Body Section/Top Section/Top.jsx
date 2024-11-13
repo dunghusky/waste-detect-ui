@@ -9,7 +9,7 @@ import { BsQuestionCircle } from "react-icons/bs";
 
 import img from "../../../Assets/user1.jpg"
 import img2 from "../../../Assets/cay_den.png"
-import video from "../../../../../LoginAssets/video.mp4"
+import video from "../../../../Login/Assets/video.mp4"
 
 function Top() {
   return (
