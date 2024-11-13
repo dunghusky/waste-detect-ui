@@ -1,7 +1,7 @@
 // import React from 'react'
 import '../SideBar Section/sidebar.css'
 
-import logo from '../../../../LoginAssets/logo.png'
+import logo from '../../../Login/Assets/logo.png'
 
 import { IoMdSpeedometer } from "react-icons/io";
 import { MdDeliveryDining } from "react-icons/md";
