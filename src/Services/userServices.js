@@ -1,7 +1,7 @@
-import Axios from 'axios'
+import axios from 'axios'; 
 
 const loginAPI = (user_name, password) => {
-    return Axios.post("/api/v1/user/login", {user_name, password})
-}
+  return axios.post("/api/v1/user/login", { user_name, password });
+};
 
-export {loginAPI}
+export { loginAPI };
