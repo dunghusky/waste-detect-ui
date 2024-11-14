@@ -3,7 +3,10 @@ import './Login.css'
 import '../../App.css'
 
 import { Link } from 'react-router-dom'
-import Axios from 'axios'
+// import Axios from 'axios'
+import {loginAPI} from "../../Services/userServices"
+import { message } from 'antd';
+import { useNavigate } from 'react-router-dom';
 
 // import { loginAPI } from '../../Services/userServices';
 
@@ -18,22 +21,27 @@ const Login = () => {
   //Usetate
   const [loginUserName, setLoginUserName] = useState('')
   const [loginPassword, setLoginPassword] = useState('')
+  const navigate = useNavigate();
 
-  //Onclick
-  const loginUser = (e) => {
+  const loginUser = async () => {
+    try {
+      const res = await loginAPI(loginUserName, loginPassword);
+      console.log("API response:", res);
 
-    e.preventDefault();
-
-
-    Axios.post("http://127.0.0.1:8000/api/v1/user/login", {
-      user_name: loginUserName,
-      password: loginPassword,
-    }).then((response) => {
-      console.log(response)
+      if (res.data.status === 200) {
+        message.success("Đăng nhập thành công!");
+       // Đợi 2 giây rồi chuyển hướng đến Dashboard
+        setTimeout(() => {
+          navigate("/dashboard");
+        }, 2000);
+      } else {
+        message.error(res.data.message);
+      }
+    } catch (e) {
+      console.log("Login error:", e);
+      message.error("Don't login now!");
     }
-    )
-  }
-
+  };
 
   return (
     <div className='loginPage flex'>
@@ -62,7 +70,6 @@ const Login = () => {
         </div>
 
         <form action="" className="form grid">
-          {/* <span className='showMessage'>Login status will go here</span> */}
 
           <div className="inputDiv">
             <label htmlFor="username">Tên đăng nhập</label>
@@ -88,12 +95,10 @@ const Login = () => {
             </div>
           </div>
 
-          <button type='submit' className='btn flex' onClick={loginUser}>
+          <button type='button' className='btn flex' onClick={loginUser}>
             <span>Đăng nhập</span>
             <AiOutlineSwapRight className='icon'/>
           </button>
-
-          <a href="/dashboard">Dashboard</a>
 
           <span className='forgotPassword'>
             Quên mật khẩu? <a href="">Click Here</a>
