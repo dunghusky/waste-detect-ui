@@ -111,7 +111,7 @@ img, video {
 }
 .loginPage .container {
   height: 75vh;
-  width: 100%;
+  width: 85%;
   margin: auto;
   justify-content: space-between;
   border-radius: 10px;

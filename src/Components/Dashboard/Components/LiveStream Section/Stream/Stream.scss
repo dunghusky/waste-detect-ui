@@ -1,0 +1,154 @@
+:root{
+    //Dashboard 
+    --PrimaryColor: hsl(94, 59%, 35%);
+    --textColor: hsl(240, 1%, 48%)
+
+    //Login
+    --primaryColor: hsl(94, 55%, 56%);
+    --hoverColor: #bdf094;
+    --paleGreen: hsl(96, 75%, 89%);
+    --whiteColor: hsl(0, 0%, 100%);
+    --blackColor: hsl(0, 0%, 18%);
+    --greyText: rgb(190, 190, 190);
+    --bgColor: hsl(220, 10%, 94%);
+    --inputColor: hsl(330, 12%, 97%);
+
+    --biggestFontSize: 2.5rem;
+    --h1FontSize: 1.5rem;
+    --h2FontSize: 1.25rem;
+    --h3FontSize: 1rem;
+    --normalFontSize: .938rem;
+    --smallFontSize: .813rem;
+    --smallestFontSize: .75rem;
+}
+
+.streamSection{
+    .videoDiv{
+        position: relative;
+        display: flex;
+        flex-basis: 80%;
+        width: 90%;
+        background-color: red;
+        justify-content: center;
+        padding: 1.5rem;
+        border-radius: 1rem;
+        overflow: hidden;
+        // video{
+        //     // position: absolute;
+        //     height: 100%;
+        //     width: 100%;
+        //     object-fit: cover;
+        //     top: 0;
+        //     bottom: 0;
+        //     left: 0;
+        //     right: 0;
+        // }
+    }
+}
+
+
+// @media screen and (max-width:990px){
+//     .cardSection{
+//         flex-direction: column;
+
+//         .rightCard, .leftCard{
+//             width: 100%;
+//             flex-basis: 100%;
+//         }
+
+//         .leftCard{
+//             margin-top: 2rem;
+//             align-self: flex-start;
+//             height: 10px !important;
+
+//             .sideBarCard{
+//                 display: block !important;
+//             }
+//         }
+//     }
+// }
+
+// @media screen and (max-width: 918px) {
+//     .headerSection{
+//         .searchBar{
+//             display: none;
+//         }
+//     }
+// }
+
+// @media screen and (max-width: 725px) {
+//     .cardSection{
+//         .leftCard{
+//             .main{
+//                 width: 100%;
+//             }
+
+//             .sideBarCard{
+//                 display: none !important;
+//             }
+//         }
+//     }
+// }
+
+// @media screen and (max-width: 490px) {
+//     .headerSection{
+//         .adminDiv{
+//             display: none;
+//         }
+
+//         .title{
+//             text-align: center;
+//             margin: auto;
+//         }
+//     }
+
+//     .cardSection{
+//         .rightCard{
+//             text-align: center;
+
+//             .buttons{
+//                 margin: auto;
+//                 flex-direction: column;
+
+//                 .btn{
+//                     width: 100%;
+//                 }
+//             }
+//         }
+
+//         .leftCard{
+//             .main{
+//                 display: flex;
+//                 align-items: center;
+//                 justify-content: center;
+
+//                 .textDiv{
+//                     margin: auto;
+//                 }
+
+//                 &::before{
+//                     width: 100% !important;
+//                 }
+
+//                 .imgDiv{
+//                     display: none;
+//                 }
+//             }
+//         }
+//     }
+// }
+
+// @media screen and (max-width: 390px){
+//     .topSection{
+//         .cardContent{
+//             .rightCard{
+//                 text-align: center;
+//                 padding: 2rem 1rem;
+
+//                 h1{
+//                     font-size: var(--h2FontSize);
+//                 }
+//             }
+//         }
+//     }
+// }
