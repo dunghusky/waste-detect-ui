@@ -1,3 +1,4 @@
+
 // @import url('https://fonts.googleapis.com/css2?family=Montserrat,wght@300;400;500;600;700;800&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
 
@@ -136,7 +137,7 @@ img, video{
 
     .container{
         height: 75vh;
-        width: 100%;
+        width: 85%;
         margin: auto;
         justify-content: space-between;
         border-radius: 10px;
@@ -155,10 +156,6 @@ img, video{
             flex-direction: column;
             margin: auto;
             border-radius: 10px;
-            // -webkit-border-radius: 10px;
-            // -moz-border-radius: 10px;
-            // -ms-border-radius: 10px;
-            // -o-border-radius: 10px;
             overflow: hidden;
 
             video, .footerDiv{
