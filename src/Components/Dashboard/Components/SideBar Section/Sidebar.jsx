@@ -2,6 +2,7 @@
 import '../SideBar Section/sidebar.css'
 
 import logo from '../../../Login/Assets/logo.png'
+import { Link } from 'react-router-dom';
 
 import { IoMdSpeedometer } from "react-icons/io";
 import { MdDeliveryDining } from "react-icons/md";
@@ -30,21 +31,21 @@ const Sidebar = () => {
 
         <ul className="menuLists grid">
           <li className="listItem">
-            <a href="#" className='menuLink flex'>
+            <Link to="/dashboard" className='menuLink flex'>
                 <IoMdSpeedometer className='icon'/>
                 <span className="smallTex">
                   Dashboard
                 </span>
-            </a>
+            </Link>
           </li>
 
           <li className="listItem">
-            <a href="#" className='menuLink flex'>
+             <Link to="/dashboard/realtime" className='menuLink flex'>
                 <MdDeliveryDining  className='icon'/>
                 <span className="smallTex">
                   My Orders
                 </span>
-            </a>
+            </Link>
           </li>
 
           <li className="listItem">
