@@ -12,7 +12,7 @@ import img3 from "../../../Assets/img8.png";
 import img5 from "../../../Assets/user1.jpg";
 import img6 from "../../../Assets/user2.jpg";
 
-function Listing() {
+const Listing = () => {
   return (
     <div className='listingSection'>
 

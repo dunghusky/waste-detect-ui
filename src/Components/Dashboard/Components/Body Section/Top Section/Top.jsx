@@ -11,7 +11,7 @@ import img from "../../../Assets/user1.jpg"
 import img2 from "../../../Assets/cay_den.png"
 import video from "../../../../Login/Assets/video.mp4"
 
-function Top() {
+const Top = () => {
   return (
     <div className='topSection'>
       <div className="headerSection flex">
@@ -41,7 +41,7 @@ function Top() {
           <p>The world`s fast growing industy today are natural made products</p>
 
           <div className="buttons flex">
-            <button className="btn">Explore More</button>
+            <button className="btn transparent">Explore More</button>
             <button className="btn transparent">Top Sellers</button>
           </div>
 
