@@ -102,7 +102,13 @@
                 .btn{
                     padding: .5rem 1rem;
                 }
+
+                h3{
+                font-size: var(--h2FontSize);
+                color: var(--blackColor);
+                font-weight: 700;
             }
+        }
 
             .card{
                 padding: 1rem 1.5rem;
