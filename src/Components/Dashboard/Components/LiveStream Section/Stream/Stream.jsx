@@ -63,7 +63,7 @@ const Stream = () => {
   // };
 
   return (
-    <div className="w-[90%] h-[90%]">
+    <div className="w-[100%] h-[95%]">
       <div className="w-full h-full flex items-center justify-center bg-red-500">
         {streamUrl ? (
           <img
