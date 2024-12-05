@@ -1,12 +1,12 @@
 // import React from 'react'
 // import { Button } from 'antd'
-import Stream from '../../Components/LiveStream Section/Stream/Stream'
-import '../../Components/LiveStream Section/BodyStream.css'
+import VideoStream from '../../Components/Video Section/VideoStream/VideoStream'
+import '../../Components/Video Section/BodyVideo.css'
 
-function BodyStream() {
+function BodyVideo() {
   return (
     <div className='mainContent'>
-        <Stream/>
+        <VideoStream/>
       {/* <div className="bottom flex gap-2 w-full justify-center items-center">
        <Button type='primary'>Test 1</Button>  flex flex-col gap-3 w-full h-full items-center justify-center
        <Button type='default'>Test 2</Button>
@@ -15,4 +15,4 @@ function BodyStream() {
   )
 }
 
-export default BodyStream
+export default BodyVideo

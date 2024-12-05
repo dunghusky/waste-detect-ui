@@ -1,0 +1,32 @@
+:root {
+  --PrimaryColor: hsl(94, 59%, 35%);
+  --textColor: hsl(240, 1%, 48%)
+  //Login
+  --primaryColor: hsl(94, 55%, 56%);
+  --hoverColor: #bdf094;
+  --paleGreen: hsl(96, 75%, 89%);
+  --whiteColor: hsl(0, 0%, 100%);
+  --blackColor: hsl(0, 0%, 18%);
+  --greyText: rgb(190, 190, 190);
+  --bgColor: hsl(220, 10%, 94%);
+  --inputColor: hsl(330, 12%, 97%);
+  --biggestFontSize: 2.5rem;
+  --h1FontSize: 1.5rem;
+  --h2FontSize: 1.25rem;
+  --h3FontSize: 1rem;
+  --normalFontSize: .938rem;
+  --smallFontSize: .813rem;
+  --smallestFontSize: .75rem;
+}
+
+.streamSection .videoDiv {
+  position: relative;
+  display: flex;
+  flex-basis: 80%;
+  width: 90%;
+  background-color: red;
+  justify-content: center;
+  padding: 1.5rem;
+  border-radius: 1rem;
+  overflow: hidden;
+}/*# sourceMappingURL=VideoStream.css.map */
