@@ -42,25 +42,6 @@ const Stream = () => {
       setLoadingStop(false); // Kết thúc trạng thái loading cho nút "Dừng"
     }
   };
-  // const loginUser = async () => {
-  //   try {
-  //     const res = await loginAPI(loginUserName, loginPassword);
-  //     console.log("API response:", res);
-
-  //     if (res.data.status === 200) {
-  //       message.success("Đăng nhập thành công!");
-  //      // Đợi 2 giây rồi chuyển hướng đến Dashboard
-  //       setTimeout(() => {
-  //         navigate("/dashboard");
-  //       }, 2000);
-  //     } else {
-  //       message.error(res.data.message);
-  //     }
-  //   } catch (e) {
-  //     console.log("Login error:", e);
-  //     message.error("Don't login now!");
-  //   }
-  // };
 
   return (
     <div className="w-[100%] h-[95%]">

@@ -9,4 +9,7 @@ const streamAPI = () => {
 const stopStreamAPI = () => {
   return axios.post("/api/v1/stream/stop", { });
 };
-export { loginAPI, streamAPI, stopStreamAPI };
+const getVideoStreamAPI = () => {
+  return axios.post("/api/v1/stream/get_video_url", { });
+};
+export { loginAPI, streamAPI, stopStreamAPI, getVideoStreamAPI };

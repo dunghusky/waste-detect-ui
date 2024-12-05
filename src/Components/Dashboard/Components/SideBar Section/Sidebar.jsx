@@ -49,12 +49,12 @@ const Sidebar = () => {
           </li>
 
           <li className="listItem">
-            <a href="#" className='menuLink flex'>
+            <Link to="/dashboard/video" className='menuLink flex'>
                 <MdOutlineExplore className='icon'/>
                 <span className="smallTex">
                   Explore
                 </span>
-            </a>
+            </Link>
           </li>
 
           <li className="listItem">
