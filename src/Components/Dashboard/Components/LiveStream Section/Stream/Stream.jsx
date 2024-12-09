@@ -1,6 +1,7 @@
 import { useState} from "react";
 // import Hls from "hls.js";
 import { stopStreamAPI } from '../../../../../Services/userServices';
+import { useNavigate } from 'react-router-dom'
 
 const Stream = () => {
   //Usetate
@@ -8,6 +9,7 @@ const Stream = () => {
   const [loadingStop, setLoadingStop] = useState(false);  // Trạng thái "Dừng phân loại"
   const [error, setError] = useState(null); // Trạng thái lỗi
   const [streamUrl, setStreamUrl] = useState(null); // URL của video stream
+  const navigate = useNavigate();
   const fixedStreamUrl = "http://127.0.0.1:8000/api/v1/stream/video_feed";
   // const navigate = useNavigate();
 
@@ -32,15 +34,22 @@ const Stream = () => {
     setError(null); // Reset lỗi trước khi bắt đầu
 
     try {
-    await stopStreamAPI(); // Gọi API dừng stream
-    console.log('Stream stopped successfully');
-    setStreamUrl(null); // Xóa URL stream => Dừng hiển thị <img>
+      await stopStreamAPI(); // Gọi API dừng stream
+      console.log('Stream stopped successfully');
+      setStreamUrl(null); // Xóa URL stream => Dừng hiển thị <img>
     } catch (err) {
-      console.error('Error stopping stream:', err);
-      setError('Không thể dừng phân loại.');
-    } finally {
-      setLoadingStop(false); // Kết thúc trạng thái loading cho nút "Dừng"
-    }
+        console.error('Error stopping stream:', err);
+        setError('Không thể dừng phân loại.');
+      } finally {
+        setLoadingStop(false); // Kết thúc trạng thái loading cho nút "Dừng"
+      }
+  };
+
+  const handleViewVideo = () => {
+    // Chuyển hướng đến trang "/dashboard/realtime"
+    setTimeout(() => {
+        navigate("/dashboard/video");
+    }, 2000);
   };
 
   return (
@@ -64,7 +73,7 @@ const Stream = () => {
        <button type='button' className='btn flex'  onClick={handleStopStream} disabled={loadingStop || loadingStart || streamUrl === null}>
         <span>{loadingStop ? 'Đang xử lý...' : 'Dừng phân loại'}</span>
        </button>
-       <button type='button' className='btn flex' >
+       <button type='button' className='btn flex' onClick={handleViewVideo}>
         <span>Xem lại</span>
        </button>
       </div>

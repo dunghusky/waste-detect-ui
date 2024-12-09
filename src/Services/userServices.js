@@ -10,6 +10,6 @@ const stopStreamAPI = () => {
   return axios.post("/api/v1/stream/stop", { });
 };
 const getVideoStreamAPI = () => {
-  return axios.post("/api/v1/stream/get_video_url", { });
+  return axios.get("/api/v1/stream/get_video_url", { });
 };
 export { loginAPI, streamAPI, stopStreamAPI, getVideoStreamAPI };

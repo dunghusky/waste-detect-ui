@@ -92,15 +92,14 @@ img, video{
 body{
     display: flex;
     align-items: center;
-    justify-content: center;
     margin: auto;
-    padding: 1rem;
+    width: 100vw;
 }
 
-.container{
+.container-dashboard{
     position: relative;
-    width: 95vw;
-    height: 95vh;
+    width: 97% !important;
+    height: 95%;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -108,6 +107,7 @@ body{
     overflow: hidden;
     border-radius: 1rem;
     box-shadow: 2px 2px 8px var(--greyText);
+    margin: 1rem;
 }
 
 /*scroll*/

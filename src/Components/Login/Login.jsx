@@ -1,12 +1,11 @@
 import {useState} from 'react'
-import './Login.css'
-import '../../App.css'
+import '../../Components/Login/Login.css'
+// import '../../App.css'
 
-import { Link } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 // import Axios from 'axios'
 import {loginAPI} from "../../Services/userServices"
 import { message } from 'antd';
-import { useNavigate } from 'react-router-dom';
 
 // import { loginAPI } from '../../Services/userServices';
 
