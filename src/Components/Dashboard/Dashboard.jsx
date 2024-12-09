@@ -7,7 +7,8 @@ import { Routes, Route } from 'react-router-dom';
 
 function Dashboard() {
   return (
-    <div className='container'>
+   <div className='w-[100vw] h-[100vh] flex justify-center items-center'>
+     <div className='container-dashboard'>
        <Sidebar/>
         <Routes>
           <Route path="/" element={<Body />} /> {/* Mặc định là Dashboard */}
@@ -15,6 +16,7 @@ function Dashboard() {
           <Route path="video" element={<BodyVideo />} />
         </Routes>
     </div>
+   </div>
   )
 }
 
