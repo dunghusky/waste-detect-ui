@@ -93,10 +93,28 @@ const Sidebar = () => {
           </li>
 
           <li className="listItem">
-            <a href="#" className='menuLink flex'>
+            <Link to="/dashboard/waste-table" className='menuLink flex'>
                 <MdOutlinePermContactCalendar className='icon'/>
                 <span className="smallTex">
-                  Contact
+                  Rác thải
+                </span>
+            </Link>
+          </li>
+
+          <li className="listItem">
+            <a href="#" className='menuLink flex'>
+                <BsCreditCard2Front className='icon'/>
+                <span className="smallTex">
+                  Billing
+                </span>
+            </a>
+          </li>
+
+          <li className="listItem">
+            <a href="#" className='menuLink flex'>
+                <BsCreditCard2Front className='icon'/>
+                <span className="smallTex">
+                  Billing
                 </span>
             </a>
           </li>

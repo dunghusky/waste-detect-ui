@@ -3,6 +3,7 @@ import Sidebar from '../Dashboard/Components/SideBar Section/Sidebar'
 import Body from '../Dashboard/Components/Body Section/Body'
 import BodyStream from '../Dashboard/Components/LiveStream Section/BodyStream'
 import BodyVideo from '../Dashboard/Components/Video Section/BodyVideo'
+import WasteBody from '../Dashboard/Components/Data Management/Waste/WasteBody'  
 import { Routes, Route } from 'react-router-dom';
 
 function Dashboard() {
@@ -14,7 +15,7 @@ function Dashboard() {
           <Route path="/" element={<Body />} /> {/* Mặc định là Dashboard */}
           <Route path="realtime" element={<BodyStream />} />
           <Route path="video" element={<BodyVideo />} />
-          <Route path="waste-table" element={<BodyStream />} />
+          <Route path="waste-table" element={<WasteBody />} />
         </Routes>
     </div>
    </div>
