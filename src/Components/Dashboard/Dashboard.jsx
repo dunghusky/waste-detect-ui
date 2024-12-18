@@ -14,6 +14,7 @@ function Dashboard() {
           <Route path="/" element={<Body />} /> {/* Mặc định là Dashboard */}
           <Route path="realtime" element={<BodyStream />} />
           <Route path="video" element={<BodyVideo />} />
+          <Route path="waste-table" element={<BodyStream />} />
         </Routes>
     </div>
    </div>
