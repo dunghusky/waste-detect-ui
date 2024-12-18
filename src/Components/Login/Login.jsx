@@ -44,7 +44,7 @@ const Login = () => {
 
   return (
     <div className='loginPage flex'>
-    <div className="container flex">
+    <div className="container-login flex">
 
       <div className="videoDiv">
         <video src={video} autoPlay muted loop></video>
