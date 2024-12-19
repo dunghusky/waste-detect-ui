@@ -4,6 +4,7 @@ import Body from '../Dashboard/Components/Body Section/Body'
 import BodyStream from '../Dashboard/Components/LiveStream Section/BodyStream'
 import BodyVideo from '../Dashboard/Components/Video Section/BodyVideo'
 import WasteBody from '../Dashboard/Components/Data Management/Waste/WasteBody'  
+import WasteCategoryBody from '../Dashboard/Components/Data Management/WasteCategory/WasteCategoryBody'  
 import { Routes, Route } from 'react-router-dom';
 
 function Dashboard() {
@@ -16,6 +17,7 @@ function Dashboard() {
           <Route path="realtime" element={<BodyStream />} />
           <Route path="video" element={<BodyVideo />} />
           <Route path="waste-table" element={<WasteBody />} />
+          <Route path="waste-category-table" element={<WasteCategoryBody />} />
         </Routes>
     </div>
    </div>

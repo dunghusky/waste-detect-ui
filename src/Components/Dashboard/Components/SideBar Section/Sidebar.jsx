@@ -93,6 +93,15 @@ const Sidebar = () => {
           </li>
 
           <li className="listItem">
+            <Link to="/dashboard/waste-category-table" className='menuLink flex'>
+                <MdOutlinePermContactCalendar className='icon'/>
+                <span className="smallTex">
+                  Phân loại rác
+                </span>
+            </Link>
+          </li>
+
+          <li className="listItem">
             <Link to="/dashboard/waste-table" className='menuLink flex'>
                 <MdOutlinePermContactCalendar className='icon'/>
                 <span className="smallTex">
