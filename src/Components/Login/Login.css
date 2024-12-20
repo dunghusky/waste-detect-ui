@@ -104,14 +104,14 @@ img, video {
 
 .loginPage {
   height: 100vh;
-  width: 100%;
+  width: 100vw;
   margin: auto;
   border-radius: 10px;
   overflow: hidden;
 }
 .loginPage .container-login {
   height: 75vh;
-  width: 85%;
+  width: 60%;
   margin: auto;
   justify-content: space-between;
   border-radius: 10px;

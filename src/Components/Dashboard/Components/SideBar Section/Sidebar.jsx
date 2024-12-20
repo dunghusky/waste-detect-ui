@@ -93,6 +93,15 @@ const Sidebar = () => {
           </li>
 
           <li className="listItem">
+            <Link to="/dashboard/waste-category-table" className='menuLink flex'>
+                <MdOutlinePermContactCalendar className='icon'/>
+                <span className="smallTex">
+                  Phân loại rác
+                </span>
+            </Link>
+          </li>
+
+          <li className="listItem">
             <Link to="/dashboard/waste-table" className='menuLink flex'>
                 <MdOutlinePermContactCalendar className='icon'/>
                 <span className="smallTex">
@@ -102,31 +111,41 @@ const Sidebar = () => {
           </li>
 
           <li className="listItem">
-            <a href="#" className='menuLink flex'>
+            <Link to="/dashboard/model-table" className='menuLink flex'>
                 <BsCreditCard2Front className='icon'/>
                 <span className="smallTex">
-                  Billing
+                  Mô hình
                 </span>
-            </a>
+            </Link>
           </li>
 
           <li className="listItem">
-            <a href="#" className='menuLink flex'>
+            <Link to="/dashboard/camera" className='menuLink flex'>
                 <BsCreditCard2Front className='icon'/>
                 <span className="smallTex">
-                  Billing
+                  Camera
                 </span>
-            </a>
+            </Link>
           </li>
 
           <li className="listItem">
-            <a href="#" className='menuLink flex'>
+            <Link to="/dashboard/process-video" className='menuLink flex'>
                 <BsCreditCard2Front className='icon'/>
                 <span className="smallTex">
-                  Billing
+                  Quản lý Video
                 </span>
-            </a>
+            </Link>
           </li>
+
+          <li className="listItem">
+            <Link to="/dashboard/details-process-waste" className='menuLink flex'>
+                <BsCreditCard2Front className='icon'/>
+                <span className="smallTex">
+                  Quản lý xử lý rác
+                </span>
+            </Link>
+          </li>
+
         </ul>
       </div>
       
