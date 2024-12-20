@@ -3,12 +3,12 @@ import Sidebar from '../Dashboard/Components/SideBar Section/Sidebar'
 import Body from '../Dashboard/Components/Body Section/Body'
 import BodyStream from '../Dashboard/Components/LiveStream Section/BodyStream'
 import BodyVideo from '../Dashboard/Components/Video Section/BodyVideo'
-import WasteBody from '../Dashboard/Components/Data Management/Waste/WasteBody'  
-import WasteCategoryBody from '../Dashboard/Components/Data Management/WasteCategory/WasteCategoryBody'  
-import ModelBody from '../Dashboard/Components/Data Management/Model/ModelBody'
-import CameraBody from '../Dashboard/Components/Data Management/Camera/CameraBody'
-import VideoBody from '../Dashboard/Components/Data Management/VideoProcess/VideoBody'
-import DetailsBody from '../Dashboard/Components/Data Management/DetailsWastesProcess/DetailsBody'
+import WasteBody from '../Dashboard/Components/DataManagement/Waste/WasteBody'  
+import WasteCategoryBody from '../Dashboard/Components/DataManagement/WasteCategory/WasteCategoryBody'  
+import ModelBody from '../Dashboard/Components/DataManagement/Model/ModelBody'
+import CameraBody from '../Dashboard/Components/DataManagement/Camera/CameraBody'
+import VideoBody from '../Dashboard/Components/DataManagement/VideoProcess/VideoBody'
+import DetailsBody from '../Dashboard/Components/DataManagement/DetailsWastesProcess/DetailsBody'
 import { Routes, Route } from 'react-router-dom';
 
 function Dashboard() {

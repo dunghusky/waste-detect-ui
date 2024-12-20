@@ -84,8 +84,8 @@
                 }
 
                 &:hover .menuLink{
-                color: var(--PrimaryColor);
-                transition: 0;
+                    color: var(--PrimaryColor);
+                    transition: 0;
                 }
 
                 &:hover::before{
