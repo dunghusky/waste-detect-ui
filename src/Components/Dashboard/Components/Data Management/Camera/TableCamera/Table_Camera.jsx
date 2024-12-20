@@ -1,4 +1,4 @@
-import "../../../../../Dashboard/Components/Data Management/Waste/Table Waste/Table_Waste.scss";
+import "../../../../../Dashboard/Components/Data Management/Camera/TableCamera/Table_Camera.scss";
 import Table from "@mui/material/Table";
 import TableBody from "@mui/material/TableBody";
 import TableCell from "@mui/material/TableCell";
@@ -7,7 +7,7 @@ import TableHead from "@mui/material/TableHead";
 import TableRow from "@mui/material/TableRow";
 import Paper from "@mui/material/Paper";
 import { useEffect, useState } from "react";
-import { getWasteCategoryDataAPI } from "../../../../../../Services/getData";
+import { getCameraDataAPI } from "../../../../../../Services/getData";
 
 const List = () => {
   const [rows, setRows] = useState([]);
@@ -15,7 +15,7 @@ const List = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await getWasteCategoryDataAPI();
+        const response = await getCameraDataAPI();
         if (response.status === 200) {
           setRows(response.data.data); // Lấy mảng dữ liệu từ response
         }
@@ -32,10 +32,10 @@ const List = () => {
         <TableHead>
           <TableRow>
             <TableCell className="tableCell">STT</TableCell>
-            <TableCell className="tableCell">Tên danh mục</TableCell>
-            <TableCell className="tableCell">Mã danh mục quy chiếu</TableCell>
-            <TableCell className="tableCell">Tổng số lượng đã xử lý</TableCell>
-            <TableCell className="tableCell">Ghi chú</TableCell>
+            <TableCell className="tableCell">Tên Camera</TableCell>
+            <TableCell className="tableCell">Địa điểm</TableCell>
+            <TableCell className="tableCell">Trạng thái hoạt động</TableCell>
+            <TableCell className="tableCell">Mô tả</TableCell>
             <TableCell className="tableCell">Action</TableCell>
           </TableRow>
         </TableHead>
@@ -45,13 +45,13 @@ const List = () => {
               <TableCell className="tableCell">{row.STT}</TableCell>
               <TableCell className="tableCell">
                 <div className="cellWrapper">
-                  <img src={row.hinhAnh} alt="" className="image" />
-                  {row.tenDanhMuc}
+                  {/* <img src={row.hinhAnh} alt="" className="image" /> */}
+                  {row.tenCamera}
                 </div>
               </TableCell>
-              <TableCell className="tableCell">{row.maDanhMucQuyChieu}</TableCell>
-              <TableCell className="tableCell">{row.tongSoLuongDaXuLy}</TableCell>
-              <TableCell className="tableCell">{row.ghiChu}</TableCell>
+              <TableCell className="tableCell">{row.diaDiem}</TableCell>
+              <TableCell className="tableCell">{row.trangThaiHoatDong}</TableCell>
+              <TableCell className="tableCell">{row.moTa}</TableCell>
               <TableCell className="tableCell">
                 <span className={`status ${row.status}`}>{row.status}</span>
               </TableCell>

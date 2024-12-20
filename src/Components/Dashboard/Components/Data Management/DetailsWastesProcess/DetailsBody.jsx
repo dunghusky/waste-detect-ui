@@ -1,7 +1,7 @@
 // import React from 'react'
-import '../../Data Management/Camera/CameraBody.css'
-import Top from './TopCamera/Top'
-import Table_Waste from './TableCamera/Table_Camera'
+import '../../Data Management/DetailsWastesProcess/DetailsBody.css'
+import Top from './TopDetails/Top'
+import Table_Waste from './TableDetails/Table_Details'
 
 function CameraBody() {
   return (

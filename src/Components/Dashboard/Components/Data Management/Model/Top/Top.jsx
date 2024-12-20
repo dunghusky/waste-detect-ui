@@ -1,5 +1,5 @@
 // import React from 'react'
-import '../../Camera/TopCamera/top.css'
+import '../../../../../Dashboard/Components/Data Management/Model/Top/top.css'
 
 import { BiSearchAlt } from "react-icons/bi";
 import { TbMessageDots } from "react-icons/tb";

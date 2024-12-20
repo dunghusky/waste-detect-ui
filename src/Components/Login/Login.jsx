@@ -43,7 +43,7 @@ const Login = () => {
   };
 
   return (
-    <div className='loginPage flex'>
+    <div className='loginPage flex items-center justify-center'>
     <div className="container-login flex">
 
       <div className="videoDiv">

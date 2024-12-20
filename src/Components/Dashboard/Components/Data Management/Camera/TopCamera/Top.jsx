@@ -1,5 +1,5 @@
 // import React from 'react'
-import '../../Camera/TopCamera/top.css'
+import './top.css'
 
 import { BiSearchAlt } from "react-icons/bi";
 import { TbMessageDots } from "react-icons/tb";
