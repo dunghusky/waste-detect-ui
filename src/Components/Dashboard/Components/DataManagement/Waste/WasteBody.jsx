@@ -1,7 +1,7 @@
 // import React from 'react'
 import '../../DataManagement/Waste/WasteBody.css'
 import Top from './TopWaste/Top'
-import Table_Waste from './TableWaste/Table_Waste'
+import Table_Waste from '../../DataManagement/Waste/TableWaste/Table_Waste'
 
 function WasteBody() {
   return (

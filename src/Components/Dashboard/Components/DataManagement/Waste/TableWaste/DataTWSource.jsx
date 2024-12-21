@@ -1,14 +1,14 @@
 import { getWasteDataAPI } from "../../../../../../Services/getData";
 
 export const wasteColumns = [
-  { field: "id", headerName: "STT", width: 70, align: "center", headerAlign: "center",
-    renderCell: (params) => {
-      return (
-        <div className="flex items-center justify-center w-full">
-          {params.id}
-        </div>
-      );
-    },
+  { field: "stt", headerName: "STT", width: 70, align: "center", headerAlign: "center",
+    // renderCell: (params) => {
+    //   return (
+    //     <div className="flex items-center justify-center w-full">
+    //        {params.rowIndex + 1} {/* Sử dụng rowIndex để lấy số thứ tự */}
+    //     </div>
+    //   );
+    // },
    },
     {
       field: "waste_name",
@@ -24,7 +24,7 @@ export const wasteColumns = [
       },
     },
   {
-    field: "id_waste",
+    field: "id_wastes",
     headerName: "Mã rác thải quy chiếu",
     width: 300,
     align: "center", headerAlign: "center",
@@ -57,11 +57,12 @@ export const fetchWasteRows = async () => {
   try {
     const response = await getWasteDataAPI();
     if (response.status === 200) {
-      return response.data.data.map((item) => ({
-        id: item.STT,
+      return response.data.data.map((item, index) => ({
+        stt: index + 1,
+        id_waste: item.maRacThai,
         waste_name: item.tenRacThai,
         img: item.hinhAnh,
-        id_waste: item.maRacThaiQuyChieu,
+        id_wastes: item.maRacThaiQuyChieu,
         category: item.danhMuc,
         details: item.tongSoLuongDaXuLy,
         note: item.ghiChu,
