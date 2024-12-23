@@ -153,7 +153,8 @@ const Datatable = () => {
           handleCloseModal: handleCloseModalAddNew,
           handleOkModal: handleSubmitFormWaste,
           data: waste,
-          isEditMode
+          isEditMode,
+          setData: setWaste
         }}
       />
     </div>

@@ -1,66 +1,164 @@
-import "../../../../../Dashboard/Components/DataManagement/WasteCategory/TableWasteCategory/Table_WasteCategory.scss";
-import Table from "@mui/material/Table";
-import TableBody from "@mui/material/TableBody";
-import TableCell from "@mui/material/TableCell";
-import TableContainer from "@mui/material/TableContainer";
-import TableHead from "@mui/material/TableHead";
-import TableRow from "@mui/material/TableRow";
-import Paper from "@mui/material/Paper";
-import { useEffect, useState } from "react";
-import { getWasteCategoryDataAPI } from "../../../../../../Services/getData";
+import "../TableWasteCategory/Table_WasteCategory.css";
+import { DataGrid } from "@mui/x-data-grid";
+import { wasteColumns, fetchWasteRows } from "./DataTWSource";
+import { FaTrash } from "react-icons/fa";
+import { HiPencilAlt } from "react-icons/hi";
+// import { faTrashXmark } from '@fortawesome/free-solid-svg-icons';
+import { useState, useEffect } from "react";
+import {deleteWasteDataAPI} from "../../../../../../Services/deleteData";
+import { Button, message } from 'antd';
+import { ModalWasteCategory } from "../../../../../../shared/modals/ModalWasteCategory";
 
-const List = () => {
-  const [rows, setRows] = useState([]);
+const Datatable = () => {
+  const [data, setData] = useState([]);
+  const [isOpenModalWaste, setIsOpenModalWaste] = useState(false);
+  const [isEditMode, setIsEditMode] = useState(false);
+  const [waste, setWaste] = useState(null);
 
-  useEffect(() => {
-    const fetchData = async () => {
-      try {
-        const response = await getWasteCategoryDataAPI();
-        if (response.status === 200) {
-          setRows(response.data.data); // Lấy mảng dữ liệu từ response
-        }
-      } catch (error) {
-        console.error("Error fetching waste data:", error);
+  const handleDelete = async (id_WasteC) => {
+  try {
+    // Gọi API để xóa dữ liệu
+      console.log("maDanhMuc", id_WasteC);
+      
+      const response = await deleteWasteDataAPI(id_WasteC);
+
+      // Kiểm tra nếu xóa thành công
+      if (response.status === 200) {
+        // Cập nhật danh sách hiển thị sau khi xóa thành công
+        setData((prevData) => {
+          const newData = prevData.filter((item) => item.id_category !== id_WasteC);
+          return newData.map((item, index) => ({
+            ...item,
+            stt: index + 1, // Cập nhật lại STT
+          }));
+        });
+
+        message.success("Xóa thành công!");
       }
+    } catch (error) {
+      console.error("Failed to delete waste data:", error);
+      message.error("Xóa thất bại!");
+    }
+  };
+
+    useEffect(() => {
+    const fetchData = async () => {
+      const rows = await fetchWasteRows();
+      setData(
+        rows.map((item, index) => ({
+          ...item,
+          id: index + 1, // Tính lại STT
+        }))
+      );
     };
     fetchData();
   }, []);
 
+   const [paginationModel, setPaginationModel] = useState({
+    pageSize: 9, // Số dòng mặc định mỗi trang
+    page: 0, // Trang hiện tại
+  });
+
+  const actionColumn = [
+    {
+      field: "action",
+      headerName: "Action",
+      width: 200,
+      align: "center", headerAlign: "center",
+      renderCell: (params) => {
+        return (
+          <div className="cellAction flex items-center justify-center w-full">
+            <div className="deleteButton "
+            onClick={() => handleOpenModalEditWaste(params.row)}
+            >
+                <HiPencilAlt />
+            </div>
+            <div
+              className="deleteButton"
+              onClick={() => handleDelete(params.row.id_category)}
+            >
+              <FaTrash />
+            </div>
+          </div>
+        );
+      },
+    },
+  ];
+
+  const handleOpenModalAddNew = () => {
+    setIsOpenModalWaste(!isOpenModalWaste)    
+  }  
+
+  const handleCloseModalAddNew = () => {
+    setIsOpenModalWaste(!isOpenModalWaste)    
+    setDefaultValue()
+  }
+
+  const handleAddNewWaste = () => {
+    //hàm gọi api và xử lý thêm mới rác
+    setIsOpenModalWaste(false)
+  }
+
+  const handleOpenModalEditWaste = async (wasteData) => {
+    setIsEditMode(true)
+    console.log('Day la data:', wasteData);
+    
+    await setWaste(wasteData);
+    setIsOpenModalWaste(true);
+  }
+
+  const handleEditWaste = () => {
+    //hàm gọi api edit rác
+  }
+
+  const setDefaultValue = () => {
+    setWaste(null)
+    setIsEditMode(false)
+  }
+
+  const handleSubmitFormWaste = async() => {
+    try{
+      if(isEditMode) await handleEditWaste();
+      else await handleAddNewWaste()
+    }
+    catch(e) {
+      console.log(e);
+    }
+    finally{
+      setDefaultValue()
+    }
+  }
+
   return (
-    <TableContainer component={Paper} className="table">
-      <Table sx={{ minWidth: 650 }} aria-label="simple table">
-        <TableHead>
-          <TableRow>
-            <TableCell className="tableCell">STT</TableCell>
-            <TableCell className="tableCell">Tên danh mục</TableCell>
-            <TableCell className="tableCell">Mã danh mục quy chiếu</TableCell>
-            <TableCell className="tableCell">Tổng số lượng đã xử lý</TableCell>
-            <TableCell className="tableCell">Ghi chú</TableCell>
-            <TableCell className="tableCell">Action</TableCell>
-          </TableRow>
-        </TableHead>
-        <TableBody>
-          {rows.map((row) => (
-            <TableRow key={row.STT}>
-              <TableCell className="tableCell">{row.STT}</TableCell>
-              <TableCell className="tableCell">
-                <div className="cellWrapper">
-                  <img src={row.hinhAnh} alt="" className="image" />
-                  {row.tenDanhMuc}
-                </div>
-              </TableCell>
-              <TableCell className="tableCell">{row.maDanhMucQuyChieu}</TableCell>
-              <TableCell className="tableCell">{row.tongSoLuongDaXuLy}</TableCell>
-              <TableCell className="tableCell">{row.ghiChu}</TableCell>
-              <TableCell className="tableCell">
-                <span className={`status ${row.status}`}>{row.status}</span>
-              </TableCell>
-            </TableRow>
-          ))}
-        </TableBody>
-      </Table>
-    </TableContainer>
+    <div className="datatable">
+      <div className="datatableTitle">
+        Danh mục phân loại rác
+        <Button onClick={handleOpenModalAddNew} className="link">
+          Thêm mới
+        </Button>
+      </div>
+      <DataGrid
+        className="datagrid"
+        rows={data}
+        columns={wasteColumns.concat(actionColumn)}
+        getRowId={(row) => row.id_category} // Sử dụng id_waste làm id duy nhất
+        paginationModel={paginationModel}
+        onPaginationModelChange={(newModel) => setPaginationModel(newModel)}
+        rowsPerPageOptions={[9, 25, 50]} // Các tùy chọn
+        checkboxSelection
+      />
+      <ModalWasteCategory
+          {...{isOpen: isOpenModalWaste,
+          setIsOpen: setIsOpenModalWaste,
+          handleCloseModal: handleCloseModalAddNew,
+          handleOkModal: handleSubmitFormWaste,
+          data: waste,
+          isEditMode,
+          setData: setWaste
+        }}
+      />
+    </div>
   );
 };
 
-export default List;
+export default Datatable;
