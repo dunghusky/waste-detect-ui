@@ -1,4 +1,4 @@
-import { getWasteDataAPI } from "../../../../../../Services/getData";
+import { getWasteCategoryDataAPI } from "../../../../../../Services/getData";
 
 export const wasteColumns = [
   { field: "stt", headerName: "STT", width: 70, align: "center", headerAlign: "center",
@@ -11,29 +11,22 @@ export const wasteColumns = [
     // },
    },
     {
-      field: "waste_name",
-      headerName: "Tên rác thải",
+      field: "category_name",
+      headerName: "Tên danh mục",
       width: 300, align: "center", headerAlign: "center",
       renderCell: (params) => {
         return (
           <div className="cellWithImg">
             <img className="cellImg" src={params.row.img} alt="avatar" />
-            {params.row.waste_name}
+            {params.row.category_name}
           </div>
         );
       },
     },
   {
-    field: "id_wastes",
-    headerName: "Mã rác thải quy chiếu",
+    field: "id_categorys",
+    headerName: "Mã danh mục quy chiếu",
     width: 300,
-    align: "center", headerAlign: "center",
-  },
-
-  {
-    field: "category_name",
-    headerName: "Danh mục",
-    width: 100,
     align: "center", headerAlign: "center",
   },
 
@@ -55,17 +48,14 @@ export const wasteColumns = [
 // Hàm lấy dữ liệu từ API
 export const fetchWasteRows = async () => {
   try {
-    const response = await getWasteDataAPI();
+    const response = await getWasteCategoryDataAPI();
     if (response.status === 200) {
       return response.data.data.map((item, index) => ({
         stt: index + 1,
-        id: item.maRacThai,
-        id_waste: item.maRacThai,
         id_category: item.maDanhMuc,
-        waste_name: item.tenRacThai,
+        category_name: item.tenDanhMuc,
         img: item.hinhAnh,
-        id_wastes: item.maRacThaiQuyChieu,
-        category_name: item.danhMuc,
+        id_categorys: item.maDanhMucQuyChieu,
         details: item.tongSoLuongDaXuLy,
         note: item.ghiChu,
       }));
