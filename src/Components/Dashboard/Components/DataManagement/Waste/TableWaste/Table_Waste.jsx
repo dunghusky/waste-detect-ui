@@ -9,6 +9,10 @@ import {deleteWasteDataAPI} from "../../../../../../Services/deleteData";
 import { Button, message } from 'antd';
 import { ModalWaste } from "../../../../../../shared/modals/ModalWaste";
 
+import {addWasteDataAPI} from "../../../../../../Services/addData"
+import {updateWasteDataAPI} from "../../../../../../Services/updateData"
+
+
 const Datatable = () => {
   const [data, setData] = useState([]);
   const [isOpenModalWaste, setIsOpenModalWaste] = useState(false);
@@ -19,7 +23,6 @@ const Datatable = () => {
   try {
     // Gọi API để xóa dữ liệu
       console.log("maRacThai", id_waste);
-      
       const response = await deleteWasteDataAPI(id_waste);
 
       // Kiểm tra nếu xóa thành công
@@ -41,17 +44,18 @@ const Datatable = () => {
     }
   };
 
-    useEffect(() => {
-    const fetchData = async () => {
-      const rows = await fetchWasteRows();
-      setData(
+  const fetchData = async () => {
+    const rows = await fetchWasteRows();
+    setData(
         rows.map((item, index) => ({
-          ...item,
-          id: index + 1, // Tính lại STT
-        }))
+            ...item,
+            id: item.maRacThai || index + 1, // Đảm bảo ID duy nhất
+          }))
       );
-    };
-    fetchData();
+  };
+
+  useEffect(() => {
+      fetchData(); // Gọi fetchData khi component được mount
   }, []);
 
    const [paginationModel, setPaginationModel] = useState({
@@ -94,10 +98,38 @@ const Datatable = () => {
     setDefaultValue()
   }
 
-  const handleAddNewWaste = () => {
-    //hàm gọi api và xử lý thêm mới rác
-    setIsOpenModalWaste(false)
-  }
+  const handleAddNewWaste = async () => {
+    console.log("Dữ liệu gửi từ ModalWaste:", waste);
+    if (!waste || !waste.waste_name || !waste.id_wastes || !waste.category_name) {
+      message.error("Vui lòng nhập đầy đủ các trường bắt buộc!");
+      return;
+    }
+
+    const formData = new FormData();
+    formData.append("wasteName", waste.waste_name); // Từ giao diện
+    formData.append("wasteId", waste.id_wastes);   // Từ giao diện
+    formData.append("categoryName", waste.category_name); // Hoặc `category_name`
+    if (waste.note) formData.append("note", waste.note); // Không bắt buộc
+    if (waste.img) formData.append("img", waste.img);   // Không bắt buộc
+
+    console.log("Dữ liệu formData:", Array.from(formData.entries()));
+
+    try {
+      // Gọi API thêm mới
+      const response = await addWasteDataAPI(formData);
+
+      if (response.status === 200) {
+        message.success("Thêm mới rác thải thành công!");
+        // Cập nhật danh sách hiển thị sau khi thêm thành công
+        // Cập nhật danh sách hiển thị
+        await fetchData(); 
+        setIsOpenModalWaste(false); // Đóng modal
+      }
+    } catch (error) {
+      console.error("Lỗi khi thêm mới rác thải:", error);
+      message.error("Thêm mới rác thải thất bại!");
+    }
+  };
 
   const handleOpenModalEditWaste = async (wasteData) => {
     setIsEditMode(true)
@@ -107,8 +139,38 @@ const Datatable = () => {
     setIsOpenModalWaste(true);
   }
 
-  const handleEditWaste = () => {
+  const handleEditWaste = async () => {
     //hàm gọi api edit rác
+    console.log("Dữ liệu gửi để chỉnh sửa:", waste);
+
+    if (!waste || !waste.id_waste) {
+        message.error("Không tìm thấy mã rác thải để chỉnh sửa!");
+        return;
+    }
+
+    const dataWaste = {
+        maRacThai: waste.id_waste, // Mã rác thải
+        tenRacThai: waste.waste_name || "", // Tên rác thải
+        maRacThaiQuyChieu: waste.id_wastes || "", // Mã quy chiếu
+        tenDanhMuc: waste.category_name || "", // Tên danh mục
+        ghiChu: waste.note || "", // Ghi chú (nếu có)
+        hinhAnh: waste.img || "", // Hình ảnh (nếu có)
+    };
+
+    try {
+        const response = await updateWasteDataAPI(dataWaste);
+
+        if (response.status === 200) {
+            message.success("Cập nhật thông tin rác thải thành công!");
+            await fetchData(); // Gọi lại fetchData để đồng bộ danh sách
+            setIsOpenModalWaste(false); // Đóng modal
+        } else {
+            message.error(response.data.message || "Cập nhật thất bại!");
+        }
+    } catch (error) {
+        console.error("Lỗi khi chỉnh sửa rác thải:", error);
+        message.error("Cập nhật rác thải thất bại!");
+    }
   }
 
   const setDefaultValue = () => {
@@ -141,7 +203,7 @@ const Datatable = () => {
         className="datagrid"
         rows={data}
         columns={wasteColumns.concat(actionColumn)}
-        getRowId={(row) => row.id_waste} // Sử dụng id_waste làm id duy nhất
+        getRowId={(row) => row.id || row.maRacThai} // Sử dụng id_waste làm id duy nhất
         paginationModel={paginationModel}
         onPaginationModelChange={(newModel) => setPaginationModel(newModel)}
         rowsPerPageOptions={[9, 25, 50]} // Các tùy chọn

@@ -2,9 +2,6 @@ import { Input, message, Modal } from "antd"
 import PropTypes from "prop-types";
 import { MdDelete } from "react-icons/md";
 import { useState, useEffect} from "react";
-// import MenuItem from '@mui/material/MenuItem';
-// import * as React from 'react';
-// import Select from '@mui/material/Select';
 import { Autocomplete, TextField } from "@mui/material";
 
 import { fetchWasteRows } from "../../Components/Dashboard/Components/DataManagement/WasteCategory/TableWasteCategory/DataTWSource";
@@ -12,20 +9,20 @@ import { fetchWasteRows } from "../../Components/Dashboard/Components/DataManage
 export const ModalWaste = ({isOpen, handleCloseModal, handleOkModal, data, isEditMode, setData}) => {
     const [options, setOptions] = useState([]); // Khai báo options state
     const [value, setValue] = useState(null); // Khai báo value state
-    
+
     useEffect(() => {
-        if(data && data.id_category && data.category) setValue({value:data.id_category, label:data.category})
-            
+        if(data && data.id_category && data.category_name) setValue({value:data.id_category, label:data.category_name});
+
     },[data])
 
     useEffect(() => {
         const fetchCategories = async () => {
             try {
-                const wasteRows = await fetchWasteRows();                                
+                const wasteRows = await fetchWasteRows();
                 const categories = wasteRows.map((waste) => ({
                         value: waste.id_category,
                         label: waste.category_name,
-                    }));                    
+                    }));
                     setOptions(categories);
                 } catch (error) {
                     console.error("Error fetching categories:", error);
@@ -34,20 +31,6 @@ export const ModalWaste = ({isOpen, handleCloseModal, handleOkModal, data, isEdi
 
         fetchCategories();
     }, []);
-    // const [options, setOptions] = useState([]);
-    // const [value, setValue] = useState(null);
-
-    // // Chuyển đổi data.category thành options
-    // useEffect(() => {
-    //     if (data && data.category) {
-    //     const transformedOptions = data.category.map((item) => ({
-    //         label: item, // Hoặc trường phù hợp trong item
-    //         value: item, // Hoặc trường phù hợp trong item
-    //     }));
-    //     setOptions(transformedOptions);
-    //     }
-    // }, [data]);
-
 
     const allowdFileTypes = {
         "image/png": true,
@@ -55,18 +38,15 @@ export const ModalWaste = ({isOpen, handleCloseModal, handleOkModal, data, isEdi
         "image/jpg": true
     }
 
-    // const options = [
-    //     { label: "None", value: "" },
-    //     { label: "Twenty", value: 20 },
-    //     { label: "Twenty one", value: 21 },
-    //     { label: "Twenty one and a half", value: 22 },
-    // ];
-
-    // const [value, setValue] = useState(null);
-
     const handleChange = (event, newValue) => {
+        console.log("Danh mục được chọn:", newValue); // Kiểm tra giá trị danh mục
         setValue(newValue);
-    }
+        setData((prev) => ({
+            ...prev,
+            id_category: newValue?.value || "", // Cập nhật id_category
+            category_name: newValue?.label || "" // Cập nhật category_name
+        }));
+    };
 
     const onChangeUploadFile = (file) => {
         if(file){const isInvalidFileType = !allowdFileTypes[file.type];
@@ -92,12 +72,12 @@ export const ModalWaste = ({isOpen, handleCloseModal, handleOkModal, data, isEdi
     }    
 
     const isURL = (value) => {
-            try {
+        try {
             new URL(value); 
             return true;
-            } catch {
+        } catch {
             return false;
-            }
+        }
     };
 
     const imgSrc = () => {
@@ -126,16 +106,29 @@ export const ModalWaste = ({isOpen, handleCloseModal, handleOkModal, data, isEdi
             <div className="grid grid-cols-12">
                <div className="col-span-4">
                  <label>Tên rác thải</label>
-                <Input value={data && data.waste_name && data.waste_name} className="w-full"/>
+                <Input 
+                    value={data && data.waste_name && data.waste_name}
+                    className="w-full"
+                    onChange={(e) => setData((prev) => ({ ...prev, waste_name: e.target.value }))}/>
                </div>
+
                <div className="col-span-4">
                  <label>Mã rác thải quy chiếu</label>
-                <Input value={data && data.id_wastes && data.id_wastes} className="w-full"/>
+                <Input 
+                    value={data && data.id_wastes && data.id_wastes} 
+                    className="w-full"
+                    onChange={(e) => setData((prev) => ({ ...prev, id_wastes: e.target.value }))}
+                />
                </div>
+
                <div className="col-span-4">
                  <label>Ghi chú</label>
-                <Input value={data && data.note && data.note} className="w-full"/>
+                <Input 
+                    value={data && data.note && data.note} 
+                    className="w-full"
+                    onChange={(e) => setData((prev) => ({ ...prev, note: e.target.value }))}/>
                </div>
+
                <div className="col-span-4">
                  <label>Danh mục</label>
                  <Autocomplete
@@ -148,7 +141,6 @@ export const ModalWaste = ({isOpen, handleCloseModal, handleOkModal, data, isEdi
                         <TextField {...params}  variant="outlined" /> //label="Age"
                     )}
                     />
-                {/* <Input value={data && data.id_wastes && data.id_wastes} className="w-full"/> */}
                </div>
                <div className="col-span-12 flex flex-col !justify-start !items-start">
                 <p>Upload Image</p>

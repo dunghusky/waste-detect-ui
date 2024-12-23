@@ -31,7 +31,7 @@ export const wasteColumns = [
   },
 
   {
-    field: "category",
+    field: "category_name",
     headerName: "Danh mục",
     width: 100,
     align: "center", headerAlign: "center",
@@ -59,12 +59,13 @@ export const fetchWasteRows = async () => {
     if (response.status === 200) {
       return response.data.data.map((item, index) => ({
         stt: index + 1,
+        id: item.maRacThai,
         id_waste: item.maRacThai,
         id_category: item.maDanhMuc,
         waste_name: item.tenRacThai,
         img: item.hinhAnh,
         id_wastes: item.maRacThaiQuyChieu,
-        category: item.danhMuc,
+        category_name: item.danhMuc,
         details: item.tongSoLuongDaXuLy,
         note: item.ghiChu,
       }));
