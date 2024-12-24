@@ -16,7 +16,7 @@ const addWasteDataAPI = async (formData) => {
 
 const addWasteCategoryDataAPI = async (formData) => {
     try {
-        const response = await axios.post("/api/v1/waste-category/waste_category_data", formData, {
+        const response = await axios.post("/api/v1/waste-category/add_waste_category", formData, {
         headers: {
             "Content-Type": "multipart/form-data",
         },
@@ -30,7 +30,7 @@ const addWasteCategoryDataAPI = async (formData) => {
 
 const addCameraDataAPI = async (formData) => {
     try {
-        const response = await axios.post("/api/v1/camera/camera_data", formData, {
+        const response = await axios.post("/api/v1/camera/add_camera", formData, {
         headers: {
             "Content-Type": "multipart/form-data",
         },
@@ -44,7 +44,7 @@ const addCameraDataAPI = async (formData) => {
 
 const addModelCategoryDataAPI = async (formData) => {
     try {
-        const response = await axios.post("/api/v1/model-category/model_category_data", formData, {
+        const response = await axios.post("/api/v1/model-category/add_model_category", formData, {
         headers: {
             "Content-Type": "multipart/form-data",
         },

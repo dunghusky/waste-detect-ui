@@ -5,9 +5,12 @@ import { FaTrash } from "react-icons/fa";
 import { HiPencilAlt } from "react-icons/hi";
 // import { faTrashXmark } from '@fortawesome/free-solid-svg-icons';
 import { useState, useEffect } from "react";
-import {deleteWasteDataAPI} from "../../../../../../Services/deleteData";
+import {deleteWasteCategoryDataAPI} from "../../../../../../Services/deleteData";
 import { Button, message } from 'antd';
 import { ModalWasteCategory } from "../../../../../../shared/modals/ModalWasteCategory";
+
+import {addWasteCategoryDataAPI} from "../../../../../../Services/addData"
+import {updateWasteCategoryDataAPI} from "../../../../../../Services/updateData"
 
 const Datatable = () => {
   const [data, setData] = useState([]);
@@ -15,18 +18,17 @@ const Datatable = () => {
   const [isEditMode, setIsEditMode] = useState(false);
   const [waste, setWaste] = useState(null);
 
-  const handleDelete = async (id_WasteC) => {
+  const handleDelete = async (id_category) => {
   try {
     // Gọi API để xóa dữ liệu
-      console.log("maDanhMuc", id_WasteC);
-      
-      const response = await deleteWasteDataAPI(id_WasteC);
+      console.log("maDanhMuc", id_category);
+      const response = await deleteWasteCategoryDataAPI(id_category);
 
       // Kiểm tra nếu xóa thành công
       if (response.status === 200) {
         // Cập nhật danh sách hiển thị sau khi xóa thành công
         setData((prevData) => {
-          const newData = prevData.filter((item) => item.id_category !== id_WasteC);
+          const newData = prevData.filter((item) => item.id_category !== id_category);
           return newData.map((item, index) => ({
             ...item,
             stt: index + 1, // Cập nhật lại STT
@@ -41,17 +43,18 @@ const Datatable = () => {
     }
   };
 
-    useEffect(() => {
-    const fetchData = async () => {
-      const rows = await fetchWasteRows();
-      setData(
+  const fetchData = async () => {
+    const rows = await fetchWasteRows();
+    setData(
         rows.map((item, index) => ({
-          ...item,
-          id: index + 1, // Tính lại STT
-        }))
+            ...item,
+            id: item.maDanhMuc || index + 1, // Đảm bảo ID duy nhất
+          }))
       );
-    };
-    fetchData();
+  };
+
+  useEffect(() => {
+      fetchData(); // Gọi fetchData khi component được mount
   }, []);
 
    const [paginationModel, setPaginationModel] = useState({
@@ -94,10 +97,37 @@ const Datatable = () => {
     setDefaultValue()
   }
 
-  const handleAddNewWaste = () => {
-    //hàm gọi api và xử lý thêm mới rác
-    setIsOpenModalWaste(false)
-  }
+  const handleAddNewWaste = async () => {
+    console.log("Dữ liệu gửi từ ModalWaste:", waste);
+    if (!waste || !waste.category_name || !waste.id_categorys) {
+      message.error("Vui lòng nhập đầy đủ các trường bắt buộc!");
+      return;
+    }
+
+    const formData = new FormData();
+    formData.append("categoryName", waste.category_name); // Từ giao diện
+    formData.append("categoryId", waste.id_categorys);   // Từ giao diện
+    if (waste.note) formData.append("note", waste.note); // Không bắt buộc
+    if (waste.img) formData.append("img", waste.img);   // Không bắt buộc
+
+    console.log("Dữ liệu formData:", Array.from(formData.entries()));
+
+    try {
+      // Gọi API thêm mới
+      const response = await addWasteCategoryDataAPI(formData);
+
+      if (response.status === 200) {
+        message.success("Thêm mới danh mục thành công!");
+        // Cập nhật danh sách hiển thị sau khi thêm thành công
+        // Cập nhật danh sách hiển thị
+        await fetchData(); 
+        setIsOpenModalWaste(false); // Đóng modal
+      }
+    } catch (error) {
+      console.error("Lỗi khi thêm mới danh mục:", error);
+      message.error("Thêm mới danh mục thất bại!");
+    }
+  };
 
   const handleOpenModalEditWaste = async (wasteData) => {
     setIsEditMode(true)
@@ -107,8 +137,37 @@ const Datatable = () => {
     setIsOpenModalWaste(true);
   }
 
-  const handleEditWaste = () => {
+  const handleEditWaste = async () => {
     //hàm gọi api edit rác
+    console.log("Dữ liệu gửi để chỉnh sửa:", waste);
+
+    if (!waste || !waste.id_category) {
+        message.error("Không tìm thấy mã danh mục để chỉnh sửa!");
+        return;
+    }
+
+    const dataWaste = {
+        maDanhMuc: waste.id_category, // Mã rác thải
+        tenDanhMuc: waste.category_name || "", // Tên rác thải
+        maDanhMucQuyChieu: waste.id_categorys || "", // Mã quy chiếu
+        ghiChu: waste.note || "", // Ghi chú (nếu có)
+        hinhAnh: waste.img || "", // Hình ảnh (nếu có)
+    };
+
+    try {
+        const response = await updateWasteCategoryDataAPI(dataWaste);
+
+        if (response.status === 200) {
+            message.success("Cập nhật thông tin danh mục thành công!");
+            await fetchData(); // Gọi lại fetchData để đồng bộ danh sách
+            setIsOpenModalWaste(false); // Đóng modal
+        } else {
+            message.error(response.data.message || "Cập nhật thất bại!");
+        }
+    } catch (error) {
+        console.error("Lỗi khi chỉnh sửa danh mục:", error);
+        message.error("Cập nhật danh mục thất bại!");
+    }
   }
 
   const setDefaultValue = () => {

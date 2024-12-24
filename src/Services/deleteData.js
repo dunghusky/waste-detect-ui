@@ -4,8 +4,8 @@ const deleteWasteDataAPI = (id_waste) => {
   return axios.post("/api/v1/waste/delete_waste", { idWaste: id_waste });
 };
 
-const deleteWasteCategoryDataAPI = (id_WasteC) => {
-  return axios.post("/api/v1/waste-category/delete_waste_category", {idWasteC: id_WasteC });
+const deleteWasteCategoryDataAPI = (id_category) => {
+  return axios.post("/api/v1/waste-category/delete_waste_category", {idWasteCategory: id_category });
 };
 
 const deleteCameraDataAPI = (id_Camera) => {

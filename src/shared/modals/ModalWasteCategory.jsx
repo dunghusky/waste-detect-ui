@@ -1,28 +1,13 @@
 import { Input, message, Modal } from "antd"
 import PropTypes from "prop-types";
 import { MdDelete } from "react-icons/md";
-import { useState} from "react";
-// import MenuItem from '@mui/material/MenuItem';
-// import * as React from 'react';
-// import Select from '@mui/material/Select';
-import { Autocomplete, TextField } from "@mui/material";
 
 export const ModalWasteCategory = ({isOpen, handleCloseModal, handleOkModal, data, isEditMode, setData}) => {
 
-    // const [options, setOptions] = useState([]);
-    // const [value, setValue] = useState(null);
-
-    // // Chuyển đổi data.category thành options
     // useEffect(() => {
-    //     if (data && data.category) {
-    //     const transformedOptions = data.category.map((item) => ({
-    //         label: item, // Hoặc trường phù hợp trong item
-    //         value: item, // Hoặc trường phù hợp trong item
-    //     }));
-    //     setOptions(transformedOptions);
-    //     }
-    // }, [data]);
+    //     if(data && data.id_category && data.category_name) setValue({value:data.id_category, label:data.category_name});
 
+    // },[data])
 
     const allowdFileTypes = {
         "image/png": true,
@@ -30,31 +15,14 @@ export const ModalWasteCategory = ({isOpen, handleCloseModal, handleOkModal, dat
         "image/jpg": true
     }
 
-    const options = [
-        { label: "None", value: "" },
-        { label: "Twenty", value: 20 },
-        { label: "Twenty one", value: 21 },
-        { label: "Twenty one and a half", value: 22 },
-    ];
-
-    const [value, setValue] = useState(null);
-
-    const handleChange = (event, newValue) => {
-        setValue(newValue);
-    }
-
-    // const [age, setAge] = React.useState('');
-
-    // const handleChange = (event) => {
-    //     setAge(event.target.value);
-    // };
-
-    // const onChange = (value) => {
-    //     console.log(`selected ${value}`);
-    // };
-
-    // const onSearch = (value) => {
-    //     console.log('search:', value);
+    // const handleChange = (event, newValue) => {
+    //     console.log("Danh mục được chọn:", newValue); // Kiểm tra giá trị danh mục
+    //     setValue(newValue);
+    //     setData((prev) => ({
+    //         ...prev,
+    //         id_category: newValue?.value || "", // Cập nhật id_category
+    //         category_name: newValue?.label || "" // Cập nhật category_name
+    //     }));
     // };
 
     const onChangeUploadFile = (file) => {
@@ -64,7 +32,7 @@ export const ModalWasteCategory = ({isOpen, handleCloseModal, handleOkModal, dat
             setData((prev) => {
                 console.log(prev);
                 const dataPrev = prev ? prev : {};
-                return {...dataPrev, image: file}
+                return {...dataPrev, img: file}
             })
         }
         else{
@@ -75,58 +43,80 @@ export const ModalWasteCategory = ({isOpen, handleCloseModal, handleOkModal, dat
     }
 
     const handleDeleteImage = () => {
-        setData((prev) => {return{...prev, image: null}})
+        console.log("Vào");
+        
+        setData((prev) => {return{...prev, img: null}})
     }    
+
+    const isURL = (value) => {
+        try {
+            new URL(value); 
+            return true;
+        } catch {
+            return false;
+        }
+    };
+
+    const imgSrc = () => {
+        console.log("Vào đây");
+        
+        if(data && data.img){
+            console.log('Vào đây');
+            
+           return isURL(data.img)
+            ? data.img
+            : URL.createObjectURL(data.img); 
+        }
+    }
 
     return(
         <>
         <Modal 
-            title={isEditMode ? "Update Waste" :"Add New Waste"}
+            title={isEditMode ? "Update Waste Category" :"Add New Waste Category"}
             open={isOpen} 
             onCancel={handleCloseModal} 
             onOk={handleOkModal}
             width={1000}
             height={1000}
-            okText={isEditMode ? "Update Waste" : "Add New Waste"}
+            okText={isEditMode ? "Update Category" : "Add New Category"}
         >
             <div className="grid grid-cols-12">
                <div className="col-span-4">
-                 <label>Tên rác thải</label>
-                <Input value={data && data.waste_name && data.waste_name} className="w-full"/>
+                 <label>Tên danh mục</label>
+                <Input 
+                    value={data && data.category_name && data.category_name}
+                    className="w-full"
+                    onChange={(e) => setData((prev) => ({ ...prev, category_name: e.target.value }))}/>
                </div>
+
                <div className="col-span-4">
-                 <label>Mã rác thải quy chiếu</label>
-                <Input value={data && data.id_wastes && data.id_wastes} className="w-full"/>
+                 <label>Mã danh mục quy chiếu</label>
+                <Input 
+                    value={data && data.id_categorys && data.id_categorys} 
+                    className="w-full"
+                    onChange={(e) => setData((prev) => ({ ...prev, id_categorys: e.target.value }))}
+                />
                </div>
+
                <div className="col-span-4">
                  <label>Ghi chú</label>
-                <Input value={data && data.note && data.note} className="w-full"/>
-               </div>
-               <div className="col-span-4">
-                 <label>Danh mục</label>
-                 <Autocomplete
+                <Input 
+                    value={data && data.note && data.note} 
                     className="w-full"
-                    options={options}
-                    getOptionLabel={(option) => option.label || ""}
-                    value={value}
-                    onChange={handleChange}
-                    renderInput={(params) => (
-                        <TextField {...params}  variant="outlined" /> //label="Age"
-                    )}
-                    />
-                {/* <Input value={data && data.id_wastes && data.id_wastes} className="w-full"/> */}
+                    onChange={(e) => setData((prev) => ({ ...prev, note: e.target.value }))}/>
                </div>
+
                <div className="col-span-12 flex flex-col !justify-start !items-start">
                 <p>Upload Image</p>
                 <input type = "file" id = "upload" hidden 
                     onChange={(e) => onChangeUploadFile(e.target.files[0])}/>
                 <div className="flex gap-2">
-                    {data && data.imgega && 
+                    {data && data.img &&
                     <div className="relative group">
                         <MdDelete 
                         onClick={handleDeleteImage}
                         className="absolute right-1 top-1 group-hover:block hidden text-red-500 cursor-pointer"/>
-                        <img src={URL.createObjectURL(data.imgega)} alt="File image waste" className="h-[120px] w-fit rounded-lg"/>
+                        {isEditMode ?<img src={imgSrc()} alt="File image waste" className="h-[120px] w-fit rounded-lg"/>: <img src={URL.createObjectURL(data.img)} alt="File image waste" className="h-[120px] w-fit rounded-lg"/>}
                     </div>}
                 <label htmlFor = "upload" className="h-[120px] w-[120px] rounded-lg border border-dashed cursor-pointer flex items-center justify-center">Select File</label>
                 </div>

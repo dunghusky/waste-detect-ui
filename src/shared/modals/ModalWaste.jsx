@@ -147,7 +147,7 @@ export const ModalWaste = ({isOpen, handleCloseModal, handleOkModal, data, isEdi
                 <input type = "file" id = "upload" hidden 
                     onChange={(e) => onChangeUploadFile(e.target.files[0])}/>
                 <div className="flex gap-2">
-                    {data && data.img && 
+                    {data && data.img &&
                     <div className="relative group">
                         <MdDelete 
                         onClick={handleDeleteImage}
