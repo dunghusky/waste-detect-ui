@@ -10,7 +10,7 @@ const Stream = () => {
   const [error, setError] = useState(null); // Trạng thái lỗi
   const [streamUrl, setStreamUrl] = useState(null); // URL của video stream
   const navigate = useNavigate();
-  const fixedStreamUrl = "http://127.0.0.1:8000/api/v1/stream/video_feed";
+  const fixedStreamUrl = "http://52.88.216.148:8000/api/v1/stream/video_feed"; //"http://127.0.0.1:8000"; //
   // const navigate = useNavigate();
 
   const handleStartStream = async () => {
@@ -54,7 +54,7 @@ const Stream = () => {
 
   return (
     <div className="w-[100%] h-[95%]">
-      <div className="w-full h-full flex items-center justify-center bg-red-500">
+      <div className="w-full h-full flex items-center justify-center bg-gray-200">
         {streamUrl ? (
           <img
             className="w-[100%] h-full rounded-md"
@@ -62,7 +62,7 @@ const Stream = () => {
             alt="Video Stream"
           />
         ) : (
-          <p className="text-white">Video stream chưa được bắt đầu</p>
+          <p className="text-green-500">Video stream chưa được bắt đầu</p>
         )}
       </div>
 

@@ -13,7 +13,7 @@ export const wasteColumns = [
     {
       field: "waste_name",
       headerName: "Tên rác thải",
-      width: 300, align: "center", headerAlign: "center",
+      width: 250, align: "center", headerAlign: "center",
       renderCell: (params) => {
         return (
           <div className="cellWithImg">
@@ -26,7 +26,7 @@ export const wasteColumns = [
   {
     field: "id_wastes",
     headerName: "Mã rác thải quy chiếu",
-    width: 300,
+    width: 200,
     align: "center", headerAlign: "center",
   },
 

@@ -1,4 +1,4 @@
-import { getModelCategoryDataAPI } from "../../../../../../Services/getData";
+import { getCameraDataAPI } from "../../../../../../Services/getData";
 
 export const wasteColumns = [
   { field: "stt", headerName: "STT", width: 70, align: "center", headerAlign: "center",
@@ -11,8 +11,8 @@ export const wasteColumns = [
     // },
    },
     {
-      field: "model_name",
-      headerName: "Tên mô hình",
+      field: "camera_name",
+      headerName: "Tên Camera",
       width: 200, align: "center", headerAlign: "center",
       // renderCell: (params) => {
       //   return (
@@ -24,16 +24,23 @@ export const wasteColumns = [
       // },
     },
   {
-    field: "link",
-    headerName: "Link",
-    width: 320,
+    field: "address",
+    headerName: "Địa điểm",
+    width: 250,
+    align: "center", headerAlign: "center",
+  },
+
+  {
+    field: "status",
+    headerName: "Trạng thái",
+    width: 140,
     align: "center", headerAlign: "center",
   },
 
   {
     field: "note",
-    headerName: "Ghi chú",
-    width: 250,
+    headerName: "Mô tả",
+    width: 180,
     align: "center", headerAlign: "center",
   },
 ];
@@ -41,14 +48,15 @@ export const wasteColumns = [
 // Hàm lấy dữ liệu từ API
 export const fetchWasteRows = async () => {
   try {
-    const response = await getModelCategoryDataAPI();
+    const response = await getCameraDataAPI();
     if (response.status === 200) {
       return response.data.data.map((item, index) => ({
         stt: index + 1,
-        id_model: item.maMoHinh,
-        model_name: item.tenMoHinh,
-        link: item.duongDan,
-        note: item.ghiChu,
+        id_camera: item.maCamera,
+        camera_name: item.tenCamera,
+        address: item.diaDiem,
+        status: item.trangThaiHoatDong,
+        note: item.moTa,
       }));
     }
     return [];

@@ -2,54 +2,54 @@
 import '../Listing Section/listing.css'
 
 import { BsArrowRightShort } from "react-icons/bs";
-import { AiFillHeart } from "react-icons/ai";
+// import { AiFillHeart } from "react-icons/ai";
 import { AiOutlineHeart } from "react-icons/ai";
 
-import img from "../../../Assets/img1.png";
+// import img from "../../../Assets/img1.png";
 import img1 from "../../../Assets/img3.png";
 import img2 from "../../../Assets/img6.png";
 import img3 from "../../../Assets/img8.png";
-import img5 from "../../../Assets/user1.jpg";
-import img6 from "../../../Assets/user2.jpg";
+// import img5 from "../../../Assets/user1.jpg";
+// import img6 from "../../../Assets/user2.jpg";
 
 const Listing = () => {
   return (
     <div className='listingSection'>
 
       <div className="heading flex">
-        <h1>My Listings</h1>
+        <h1>Danh mục rác thải</h1>
         <button className="btn flex">
           See All <BsArrowRightShort className='icon'/>
         </button>
       </div>
 
       <div className="secContainer flex">
-        <div className="singleItem">
+        {/* <div className="singleItem">
           <AiFillHeart className='icon'/>
           <img src={img} alt="Image Name" />
           <h3>Annual Vince</h3>
-        </div>
+        </div> */}
 
         <div className="singleItem">
           <AiOutlineHeart className='icon'/>
           <img src={img1} alt="Image Name" />
-          <h3>Coffee Vince</h3>
+          <h3>Rác Vô Cơ</h3>
         </div>
 
         <div className="singleItem">
           <AiOutlineHeart className='icon'/>
           <img src={img2} alt="Image Name" />
-          <h3>Button Vince</h3>
+          <h3>Rác Hữu Cơ</h3>
         </div>
 
         <div className="singleItem">
           <AiOutlineHeart className='icon'/>
           <img src={img3} alt="Image Name" />
-          <h3>Spider Vince</h3>
+          <h3>Rác tái chế</h3>
         </div>
       </div>
 
-      <div className="sellers flex">
+      {/* <div className="sellers flex">
         <div className="topSellers">
           <div className="heading flex">
             <h3>Top Sellers</h3>
@@ -103,7 +103,7 @@ const Listing = () => {
             </div>
           </div>
         </div>
-      </div>
+      </div> */}
     </div>
   )
 }

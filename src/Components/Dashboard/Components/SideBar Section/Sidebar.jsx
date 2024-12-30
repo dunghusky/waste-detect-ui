@@ -43,7 +43,7 @@ const Sidebar = () => {
              <Link to="/dashboard/realtime" className='menuLink flex'>
                 <MdDeliveryDining  className='icon'/>
                 <span className="smallTex">
-                  My Orders
+                  Livestreams
                 </span>
             </Link>
           </li>
@@ -65,15 +65,7 @@ const Sidebar = () => {
                 </span>
             </a>
           </li>
-        </ul>
-      </div>
 
-      <div className="settingsDiv">
-        <h3 className="divTitle">
-          SETTINGS
-        </h3>
-
-        <ul className="menuLists grid">
           <li className="listItem">
             <a href="#" className='menuLink flex'>
                 <AiOutlinePieChart  className='icon'/>
@@ -91,6 +83,16 @@ const Sidebar = () => {
                 </span>
             </a>
           </li>
+
+        </ul>
+      </div>
+
+      <div className="settingsDiv">
+        <h3 className="divTitle">
+          QUẢN LÝ DỮ LIỆU
+        </h3>
+
+        <ul className="menuLists grid">
 
           <li className="listItem">
             <Link to="/dashboard/waste-category-table" className='menuLink flex'>
@@ -132,7 +134,7 @@ const Sidebar = () => {
             <Link to="/dashboard/process-video" className='menuLink flex'>
                 <BsCreditCard2Front className='icon'/>
                 <span className="smallTex">
-                  Quản lý Video
+                  Quản lý video
                 </span>
             </Link>
           </li>

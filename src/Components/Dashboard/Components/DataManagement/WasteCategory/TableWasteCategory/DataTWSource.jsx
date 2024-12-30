@@ -13,7 +13,7 @@ export const wasteColumns = [
     {
       field: "category_name",
       headerName: "Tên danh mục",
-      width: 300, align: "center", headerAlign: "center",
+      width: 200, align: "center", headerAlign: "center",
       renderCell: (params) => {
         return (
           <div className="cellWithImg">
@@ -26,14 +26,14 @@ export const wasteColumns = [
   {
     field: "id_categorys",
     headerName: "Mã danh mục quy chiếu",
-    width: 300,
+    width: 250,
     align: "center", headerAlign: "center",
   },
 
   {
     field: "details",
     headerName: "Tổng số lượng đã xử lý",
-    width: 100,
+    width: 190,
     align: "center", headerAlign: "center",
   },
 
