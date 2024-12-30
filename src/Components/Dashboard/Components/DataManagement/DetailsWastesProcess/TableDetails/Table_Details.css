@@ -1,24 +1,77 @@
-.table .cellWrapper {
+.datatable {
+  height: 600px;
+  width: 100%;
+  padding: 20px;
+}
+.datatable .datatableTitle {
+  width: 100%;
+  font-size: 24px;
+  color: gray;
+  margin-bottom: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.datatable .datatableTitle .link {
+  text-decoration: none;
+  color: green;
+  font-size: 16px;
+  font-weight: 400;
+  border: 1px solid green;
+  padding: 5px;
+  border-radius: 5px;
+  cursor: pointer;
+}
+.datatable .cellWithImg {
   display: flex;
   align-items: center;
 }
-.table .cellWrapper .image {
+.datatable .cellWithImg .cellImg {
   width: 32px;
   height: 32px;
   border-radius: 50%;
-  margin-right: 10px;
   -o-object-fit: cover;
      object-fit: cover;
+  margin-right: 20px;
 }
-.table .status {
+.datatable .datagrid {
+  border-radius: 10px;
+  overflow: hidden;
+  background: hsl(0, 0%, 100%);
+  box-shadow: 0 5px 5px rgb(214, 223, 213);
+}
+.datatable .cellWithStatus {
   padding: 5px;
   border-radius: 5px;
 }
-.table .status.Approved {
+.datatable .cellWithStatus.active {
+  background-color: rgba(0, 128, 0, 0.05);
   color: green;
-  background-color: rgba(0, 128, 0, 0.151);
 }
-.table .status.Pending {
+.datatable .cellWithStatus.pending {
+  background-color: rgba(255, 217, 0, 0.05);
   color: goldenrod;
-  background-color: rgba(189, 189, 3, 0.103);
+}
+.datatable .cellWithStatus.passive {
+  background-color: rgba(255, 0, 0, 0.05);
+  color: crimson;
+}
+.datatable .cellAction {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+}
+.datatable .cellAction .viewButton {
+  padding: 2px 5px;
+  border-radius: 5px;
+  color: darkblue;
+  border: 1px dotted rgba(0, 0, 139, 0.596);
+  cursor: pointer;
+}
+.datatable .cellAction .deleteButton {
+  font-size: 1.5rem;
+  padding: 5px 5px;
+  border-radius: 5px;
+  color: rgb(241, 36, 36);
+  cursor: pointer;
 }/*# sourceMappingURL=Table_Details.css.map */

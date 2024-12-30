@@ -6,7 +6,7 @@ import { Autocomplete, TextField } from "@mui/material";
 
 import { fetchWasteRows } from "../../Components/Dashboard/Components/DataManagement/WasteCategory/TableWasteCategory/DataTWSource";
 
-export const ModalWaste = ({isOpen, handleCloseModal, handleOkModal, data, isEditMode, setData}) => {
+export const ModalWaste = ({isOpen, handleCloseModal, handleOkModal, data, isEditMode, setData,isDataEdit}) => {
     const [options, setOptions] = useState([]); // Khai báo options state
     const [value, setValue] = useState(null); // Khai báo value state
 
@@ -51,7 +51,6 @@ export const ModalWaste = ({isOpen, handleCloseModal, handleOkModal, data, isEdi
     const onChangeUploadFile = (file) => {
         if(file){const isInvalidFileType = !allowdFileTypes[file.type];
         if(!isInvalidFileType){
-            console.log("Check file upload", file)
             setData((prev) => {
                 console.log(prev);
                 const dataPrev = prev ? prev : {};
@@ -66,10 +65,8 @@ export const ModalWaste = ({isOpen, handleCloseModal, handleOkModal, data, isEdi
     }
 
     const handleDeleteImage = () => {
-        console.log("Vào");
-        
         setData((prev) => {return{...prev, img: null}})
-    }    
+    }  
 
     const isURL = (value) => {
         try {
@@ -81,11 +78,7 @@ export const ModalWaste = ({isOpen, handleCloseModal, handleOkModal, data, isEdi
     };
 
     const imgSrc = () => {
-        console.log("Vào đây");
-        
-        if(data && data.img){
-            console.log('Vào đây');
-            
+        if(data && data.img){            
            return isURL(data.img)
             ? data.img
             : URL.createObjectURL(data.img); 
@@ -101,6 +94,7 @@ export const ModalWaste = ({isOpen, handleCloseModal, handleOkModal, data, isEdi
             onOk={handleOkModal}
             width={1000}
             height={1000}
+            okButtonProps={{disabled:isDataEdit}}
             okText={isEditMode ? "Update Waste" : "Add New Waste"}
         >
             <div className="grid grid-cols-12">
@@ -152,7 +146,7 @@ export const ModalWaste = ({isOpen, handleCloseModal, handleOkModal, data, isEdi
                         <MdDelete 
                         onClick={handleDeleteImage}
                         className="absolute right-1 top-1 group-hover:block hidden text-red-500 cursor-pointer"/>
-                        {isEditMode ?<img src={imgSrc()} alt="File image waste" className="h-[120px] w-fit rounded-lg"/>: <img src={URL.createObjectURL(data.img)} alt="File image waste" className="h-[120px] w-fit rounded-lg"/>}
+                        {data && data.img && isEditMode ?<img src={imgSrc()} alt="File image waste" className="h-[120px] w-fit rounded-lg"/>: <img src={URL.createObjectURL(data.img)} alt="File image waste" className="h-[120px] w-fit rounded-lg"/>}
                     </div>}
                 <label htmlFor = "upload" className="h-[120px] w-[120px] rounded-lg border border-dashed cursor-pointer flex items-center justify-center">Select File</label>
                 </div>
@@ -170,4 +164,5 @@ ModalWaste.propTypes = {
     data: PropTypes.object.isRequired,
     isEditMode: PropTypes.bool.isRequired,
     setData: PropTypes.func.isRequired,
+    isDataEdit: PropTypes.bool.isRequired,
 };

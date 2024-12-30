@@ -2,7 +2,7 @@ import { Input, message, Modal } from "antd"
 import PropTypes from "prop-types";
 import { MdDelete } from "react-icons/md";
 
-export const ModalWasteCategory = ({isOpen, handleCloseModal, handleOkModal, data, isEditMode, setData}) => {
+export const ModalWasteCategory = ({isOpen, handleCloseModal, handleOkModal, data, isEditMode, setData, isDataEdit}) => {
 
     // useEffect(() => {
     //     if(data && data.id_category && data.category_name) setValue({value:data.id_category, label:data.category_name});
@@ -15,20 +15,9 @@ export const ModalWasteCategory = ({isOpen, handleCloseModal, handleOkModal, dat
         "image/jpg": true
     }
 
-    // const handleChange = (event, newValue) => {
-    //     console.log("Danh mục được chọn:", newValue); // Kiểm tra giá trị danh mục
-    //     setValue(newValue);
-    //     setData((prev) => ({
-    //         ...prev,
-    //         id_category: newValue?.value || "", // Cập nhật id_category
-    //         category_name: newValue?.label || "" // Cập nhật category_name
-    //     }));
-    // };
-
     const onChangeUploadFile = (file) => {
         if(file){const isInvalidFileType = !allowdFileTypes[file.type];
         if(!isInvalidFileType){
-            console.log("Check file upload", file)
             setData((prev) => {
                 console.log(prev);
                 const dataPrev = prev ? prev : {};
@@ -43,10 +32,8 @@ export const ModalWasteCategory = ({isOpen, handleCloseModal, handleOkModal, dat
     }
 
     const handleDeleteImage = () => {
-        console.log("Vào");
-        
         setData((prev) => {return{...prev, img: null}})
-    }    
+    }  
 
     const isURL = (value) => {
         try {
@@ -58,11 +45,7 @@ export const ModalWasteCategory = ({isOpen, handleCloseModal, handleOkModal, dat
     };
 
     const imgSrc = () => {
-        console.log("Vào đây");
-        
-        if(data && data.img){
-            console.log('Vào đây');
-            
+        if(data && data.img){            
            return isURL(data.img)
             ? data.img
             : URL.createObjectURL(data.img); 
@@ -72,12 +55,13 @@ export const ModalWasteCategory = ({isOpen, handleCloseModal, handleOkModal, dat
     return(
         <>
         <Modal 
-            title={isEditMode ? "Update Waste Category" :"Add New Waste Category"}
+            title={isEditMode ? "Update Category" :"Add New Category"}
             open={isOpen} 
             onCancel={handleCloseModal} 
             onOk={handleOkModal}
             width={1000}
             height={1000}
+            okButtonProps={{disabled:isDataEdit}}
             okText={isEditMode ? "Update Category" : "Add New Category"}
         >
             <div className="grid grid-cols-12">
@@ -116,7 +100,7 @@ export const ModalWasteCategory = ({isOpen, handleCloseModal, handleOkModal, dat
                         <MdDelete 
                         onClick={handleDeleteImage}
                         className="absolute right-1 top-1 group-hover:block hidden text-red-500 cursor-pointer"/>
-                        {isEditMode ?<img src={imgSrc()} alt="File image waste" className="h-[120px] w-fit rounded-lg"/>: <img src={URL.createObjectURL(data.img)} alt="File image waste" className="h-[120px] w-fit rounded-lg"/>}
+                        {data && data.img && isEditMode ?<img src={imgSrc()} alt="File image waste" className="h-[120px] w-fit rounded-lg"/>: <img src={URL.createObjectURL(data.img)} alt="File image waste" className="h-[120px] w-fit rounded-lg"/>}
                     </div>}
                 <label htmlFor = "upload" className="h-[120px] w-[120px] rounded-lg border border-dashed cursor-pointer flex items-center justify-center">Select File</label>
                 </div>
@@ -134,4 +118,5 @@ ModalWasteCategory.propTypes = {
     data: PropTypes.object.isRequired,
     isEditMode: PropTypes.bool.isRequired,
     setData: PropTypes.func.isRequired,
+    isDataEdit: PropTypes.bool.isRequired,
 };

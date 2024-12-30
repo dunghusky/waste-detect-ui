@@ -7,7 +7,7 @@ export default defineConfig({
   server: {
     proxy: {
       '/api': {
-        target: 'http://127.0.0.1:8000',  // địa chỉ và cổng backend
+        target: 'http://52.88.216.148:8000',// 'http://127.0.0.1:8000',//'http://127.0.0.1:8000',  // địa chỉ và cổng backend
         changeOrigin: true,
         // rewrite: (path) => path.replace(/^\/api/, '')  // loại bỏ "/api" prefix trong request
       }

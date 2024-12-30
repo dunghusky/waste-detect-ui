@@ -18,11 +18,12 @@ const Datatable = () => {
   const [isOpenModalWaste, setIsOpenModalWaste] = useState(false);
   const [isEditMode, setIsEditMode] = useState(false);
   const [waste, setWaste] = useState(null);
+  const [dataBeforeWaste, setDataBeforeWaste] = useState(null)
+  const [isDataEdit,setIsDataEdit] = useState(false);
 
   const handleDelete = async (id_waste) => {
   try {
     // Gọi API để xóa dữ liệu
-      console.log("maRacThai", id_waste);
       const response = await deleteWasteDataAPI(id_waste);
 
       // Kiểm tra nếu xóa thành công
@@ -136,42 +137,64 @@ const Datatable = () => {
     console.log('Day la data:', wasteData);
     
     await setWaste(wasteData);
+    await setDataBeforeWaste(wasteData);
     setIsOpenModalWaste(true);
   }
 
-  const handleEditWaste = async () => {
-    //hàm gọi api edit rác
-    console.log("Dữ liệu gửi để chỉnh sửa:", waste);
-
-    if (!waste || !waste.id_waste) {
-        message.error("Không tìm thấy mã rác thải để chỉnh sửa!");
-        return;
-    }
-
-    const dataWaste = {
-        maRacThai: waste.id_waste, // Mã rác thải
-        tenRacThai: waste.waste_name || "", // Tên rác thải
-        maRacThaiQuyChieu: waste.id_wastes || "", // Mã quy chiếu
-        tenDanhMuc: waste.category_name || "", // Tên danh mục
-        ghiChu: waste.note || "", // Ghi chú (nếu có)
-        hinhAnh: waste.img || "", // Hình ảnh (nếu có)
-    };
-
-    try {
-        const response = await updateWasteDataAPI(dataWaste);
-
-        if (response.status === 200) {
-            message.success("Cập nhật thông tin rác thải thành công!");
-            await fetchData(); // Gọi lại fetchData để đồng bộ danh sách
-            setIsOpenModalWaste(false); // Đóng modal
-        } else {
-            message.error(response.data.message || "Cập nhật thất bại!");
-        }
-    } catch (error) {
-        console.error("Lỗi khi chỉnh sửa rác thải:", error);
-        message.error("Cập nhật rác thải thất bại!");
+  const isCheckImageChange= () => {    
+    if(typeof(dataBeforeWaste.img) !== typeof(waste.img)){
+      return true
     }
   }
+
+  const isCheckDataChange = () => {
+   if(dataBeforeWaste && waste){
+     if(dataBeforeWaste.img !== waste.img || dataBeforeWaste.category_name !== waste.category_name || dataBeforeWaste.note !== waste.note || dataBeforeWaste.id_wastes !== waste.id_wastes || dataBeforeWaste.waste_name !== waste.waste_name){
+      console.log('Vao edit');
+      
+      return true
+    }
+          console.log('khong vao edit');
+    return false
+   }
+  }
+
+  const handleEditWaste = async () => {
+      let imageWasteChange = null; // Hình ảnh chỉ gửi nếu có thay đổi
+      if (isCheckImageChange()) {
+          imageWasteChange = waste.img ? waste.img : null; // Kiểm tra và lấy hình ảnh mới
+      }
+
+      // Kiểm tra dữ liệu cơ bản
+      if (!waste || !waste.id_waste) {
+          message.error("Không tìm thấy ID rác thải để chỉnh sửa!");
+          return;
+      }
+
+      // Chuẩn bị dữ liệu gửi
+      const formData = new FormData();
+      formData.append("id_waste", waste.id_waste); // ID bắt buộc
+      if (waste.waste_name) formData.append("wasteName", waste.waste_name); // Tên rác thải
+      if (waste.id_wastes) formData.append("wasteId", waste.id_wastes); // Mã quy chiếu (nếu có)
+      if (waste.category_name) formData.append("categoryName", waste.category_name); // Tên danh mục (nếu có)
+      if (waste.note) formData.append("note", waste.note); // Ghi chú (nếu có)
+      if (imageWasteChange) formData.append("img", imageWasteChange); // Hình ảnh mới (nếu có)
+
+      try {
+          const response = await updateWasteDataAPI(formData);
+
+          if (response.status === 200) {
+              message.success("Cập nhật thông tin rác thải thành công!");
+              await fetchData(); // Gọi lại fetchData để đồng bộ danh sách
+              setIsOpenModalWaste(false); // Đóng modal
+          } else {
+              message.error(response.data.message || "Cập nhật thất bại!");
+          }
+      } catch (error) {
+          console.error("Lỗi khi chỉnh sửa rác thải:", error);
+          message.error("Cập nhật rác thải thất bại!");
+      }
+  };
 
   const setDefaultValue = () => {
     setWaste(null)
@@ -190,6 +213,18 @@ const Datatable = () => {
       setDefaultValue()
     }
   }
+
+  useEffect(() => {
+    if(isEditMode){
+    if(!isCheckDataChange())
+        {
+          setIsDataEdit(true)
+        }
+        else {
+          setIsDataEdit(false)
+        }
+    }
+  },[waste])
 
   return (
     <div className="datatable">
@@ -216,7 +251,8 @@ const Datatable = () => {
           handleOkModal: handleSubmitFormWaste,
           data: waste,
           isEditMode,
-          setData: setWaste
+          setData: setWaste,
+          isDataEdit
         }}
       />
     </div>
