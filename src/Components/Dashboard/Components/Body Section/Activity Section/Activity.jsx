@@ -1,74 +1,54 @@
 // import React from 'react'
+import { useState, useEffect } from "react";
 import '../Activity Section/activity.css'
 import { BsArrowRightShort } from "react-icons/bs";
+import { useNavigate } from 'react-router-dom';
+import {fetchWasteRows} from '../../DataManagement/Waste/TableWaste/DataTWSource';
 
-import img from "../../../Assets/user2.jpg";
+// import img from "../../../Assets/user2.jpg";
 
 const Activity = () => {
+  const [wasteData, setWasteData] = useState([]);
+  const navigate = useNavigate();
+  // Lấy dữ liệu từ API
+  useEffect(() => {
+    const getWasteData = async () => {
+      const data = await fetchWasteRows();
+      setWasteData(data);
+    };
+    getWasteData();
+  }, []);
+
+  const handleSeeAll = () => {
+    navigate('/dashboard/waste-table'); // Chuyển hướng đến đường dẫn
+  };
+
   return (
     <div className='activitySection'>
       <div className="heading flex">
         <h1>Rác thải</h1>
-        <button className="btn flex">
+        <button type='button' className="btn flex" onClick={handleSeeAll}>
           See All
           <BsArrowRightShort className='icon'/>
         </button>
       </div>
 
       <div className="secContainer grid">
-        <div className="singleCustomer flex">
-          <img src={img} alt="Customers Image" />
-          <div className="customerDetails">
-            <span className='name'>Thuy Dung</span>
-            <small>Oder a new plants</small>
+        {wasteData.map((item) => (
+          <div key={item.id} className="singleCustomer flex">
+            <img src={item.img} alt="Customers Image" />
+            <div className="customerDetails">
+              <span className='name'>{item.waste_name}</span>
+              <small>{item.id_wastes}</small>
+            </div>
+            <div className="duration">
+              {item.category_name}
+            </div>
           </div>
-          <div className="duration">
-            2 minutes ago
-          </div>
-        </div>
-        <div className="singleCustomer flex">
-          <img src={img} alt="Customers Image" />
-          <div className="customerDetails">
-            <span className='name'>Thuy Dung</span>
-            <small>Oder a new plants</small>
-          </div>
-          <div className="duration">
-            2 minutes ago
-          </div>
-        </div>
-        <div className="singleCustomer flex">
-          <img src={img} alt="Customers Image" />
-          <div className="customerDetails">
-            <span className='name'>Thuy Dung</span>
-            <small>Oder a new plants</small>
-          </div>
-          <div className="duration">
-            2 minutes ago
-          </div>
-        </div>
-        <div className="singleCustomer flex">
-          <img src={img} alt="Customers Image" />
-          <div className="customerDetails">
-            <span className='name'>Thuy Dung</span>
-            <small>Oder a new plants</small>
-          </div>
-          <div className="duration">
-            2 minutes ago
-          </div>
-        </div>
-        <div className="singleCustomer flex">
-          <img src={img} alt="Customers Image" />
-          <div className="customerDetails">
-            <span className='name'>Thuy Dung</span>
-            <small>Oder a new plants</small>
-          </div>
-          <div className="duration">
-            2 minutes ago
-          </div>
-        </div>
+        ))}
       </div>
     </div>
-  )
-}
+  );
+};
 
 export default Activity

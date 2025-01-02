@@ -1,3 +1,4 @@
+@charset "UTF-8";
 :root {
   --PrimaryColor: hsl(94, 59%, 35%);
   --textColor: hsl(240, 1%, 48%)
@@ -214,4 +215,37 @@
   .sideBar .menuDiv .menuLists .listItem .menuLink .icon, .sideBar .settingsDiv .menuLists .listItem .menuLink .icon {
     font-size: var(--h2FontSize);
   }
+}
+/* Sidebar cơ bản */
+.sideBar .menuLists .listItem {
+  padding: 0.5rem 1rem;
+  transition: 0.3s ease;
+}
+
+/* Hiệu ứng khi active */
+.sideBar .menuLists .listItem.active {
+  height: auto;
+  background-color: var(--paleGreen); /* Màu nền nổi bật */
+  border-left: 4px solid var(--PrimaryColor); /* Đường viền trái */
+  color: var(--PrimaryColor); /* Màu chữ */
+  display: flex; /* Thêm flex để căn giữa */
+  align-items: center; /* Căn giữa theo chiều dọc */
+}
+
+.sideBar .menuLists .listItem.active .menuLink {
+  width: 100%; /* Đảm bảo chiếm hết chiều ngang */
+  align-items: center; /* Căn giữa theo chiều dọc */
+  justify-content: flex-start; /* Căn trái */
+  color: var(--PrimaryColor); /* Màu chữ nổi bật */
+  font-weight: bold; /* Chữ in đậm */
+  padding: 10px 0; /* Thêm padding để căn đều */
+}
+
+.sideBar .menuLists .listItem.active::before {
+  content: "";
+  position: absolute;
+  height: 100%;
+  width: 1px;
+  left: 0;
+  background-color: var(--PrimaryColor);
 }/*# sourceMappingURL=sidebar.css.map */

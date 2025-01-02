@@ -11,17 +11,18 @@ import img from "../../../Assets/user1.jpg"
 import img2 from "../../../Assets/cay_den.png"
 import video from "../../../../Login/Assets/video.mp4"
 
+
 const Top = () => {
   return (
     <div className='topSection'>
       <div className="headerSection flex">
         <div className="title">
-          <h1>Welcome to Pranti.</h1>
-          <p>Hello IsraTech, Welcome back!</p>
+          <h1>Chào mừng bạn đến với RevoWaste.</h1>
+          <p>Xin chào Dung, mừng bạn quay trở lại!</p>
         </div>
 
         <div className="searchBar flex">
-          <input type="text" placeholder='Search Dashboard' />
+          <input type="text" placeholder='Tìm kiếm' />
           <BiSearchAlt className='icon'/>
         </div>
 
@@ -37,12 +38,12 @@ const Top = () => {
       <div className="cardSection flex">
 
         <div className="rightCard flex">
-          <h1>Create and sell extraordinary products</h1>
-          <p>The world`s fast growing industy today are natural made products</p>
+          <h1>Phát triển hệ thống nhận diện rác thải thông minh</h1>
+          <p>Ứng dụng mô hình học sâu YOLOv8 tích hợp IoT để bảo vệ môi trường</p>
 
           <div className="buttons flex">
-            <button className="btn transparent">Explore More</button>
-            <button className="btn transparent">Top Sellers</button>
+            <button className="btn transparent">Xem thông tin</button>
+            <button className="btn transparent">Thống kê</button>
           </div>
 
           <div className="videoDiv">
@@ -53,19 +54,19 @@ const Top = () => {
         <div className="leftCard flex">
           <div className="main flex">
             <div className="textDiv">
-              <h1>My Stat</h1>
+              <h1>Xử lý rác</h1>
 
               <div className="flex">
                 <span>
-                  Today <br /> <small>4 Orders</small>
+                  Hôm nay <br /> <small>4 lượt</small>
                 </span>
                 <span>
-                  This Month <br /> <small>175 Orders</small>
+                  Tháng trước <br /> <small>175 lượt</small>
                 </span>
               </div>
 
               <span className="flex link">
-                Go to my orders <BsArrowRightShort className='icon'/>
+                Xem chi tiết <BsArrowRightShort className='icon'/>
               </span>
             </div>
 
@@ -79,10 +80,10 @@ const Top = () => {
                 <div className="circle1"></div>
                 <div className="circle2"></div>
 
-                <h3>Help Center</h3>
-                <p>Having trouble in Planti, please contact us from for more questions.</p>
+                <h3>Hỗ Trợ Quản Trị</h3>
+                <p>Cần hỗ trợ khi quản lý hệ thống? Liên hệ để được trợ giúp chi tiết.</p>
                 
-                <button className='btn'>Go to help center</button>
+                <button className='btn'>Truy cập hỗ trợ quản trị</button>
               </div>
             </div>
           </div>

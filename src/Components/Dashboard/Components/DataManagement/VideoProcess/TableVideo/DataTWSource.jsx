@@ -1,3 +1,4 @@
+
 import { getVideoProcessDataAPI } from "../../../../../../Services/getData";
 
 export const wasteColumns = [
@@ -69,6 +70,11 @@ export const wasteColumns = [
     headerName: "Link",
     width: 140,
     align: "center", headerAlign: "center",
+    renderCell: (params) => {
+        return (
+            <a href={params.row.link} className="underline italic hsl(94, 59%, 35%) block text-center">Link Video</a>
+        );
+      },
   },
 
   {

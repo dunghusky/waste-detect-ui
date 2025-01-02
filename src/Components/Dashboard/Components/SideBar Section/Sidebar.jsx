@@ -2,7 +2,7 @@
 import '../SideBar Section/sidebar.css'
 
 import logo from '../../../Login/Assets/logo.png'
-import { Link } from 'react-router-dom';
+import { Link, useLocation  } from 'react-router-dom';
 
 import { IoMdSpeedometer } from "react-icons/io";
 import { MdDeliveryDining } from "react-icons/md";
@@ -10,18 +10,31 @@ import { MdOutlineExplore } from "react-icons/md";
 import { BsTrophy } from "react-icons/bs";
 import { AiOutlinePieChart } from "react-icons/ai";
 import { BiTrendingUp } from "react-icons/bi";
-import { MdOutlinePermContactCalendar } from "react-icons/md";
-import { BsCreditCard2Front } from "react-icons/bs";
 import { BsQuestionCircle } from "react-icons/bs";
 import { BsArrowLeftShort } from "react-icons/bs";
+import { FaRecycle } from "react-icons/fa";
+import { GiNuclearWaste } from "react-icons/gi";
+import { BsClipboardData } from "react-icons/bs";
+import { MdOutlineCameraswitch } from "react-icons/md";
+import { RiFileVideoLine } from "react-icons/ri";
+import { VscServerProcess } from "react-icons/vsc";
+import { useNavigate } from 'react-router-dom';
 
 const Sidebar = () => {
+  const location = useLocation(); // Lấy đường dẫn hiện tại
+  const navigate = useNavigate();
+
+  const isActive = (path) => location.pathname === path;
+  const handleLogOut = () => {
+    navigate('/'); // Chuyển hướng đến đường dẫn
+  };
+
   return (
     <div className='sideBar grid'>
 
       <div className="logoDiv flex">
         <img src={logo} alt="Image Name" />
-        <h2>Planti.</h2>
+        <h2>RevoWaste.</h2>
       </div>
 
       <div className="menuDiv">
@@ -30,7 +43,7 @@ const Sidebar = () => {
         </h3>
 
         <ul className="menuLists grid">
-          <li className="listItem">
+          <li className={`listItem ${isActive('/dashboard') ? 'active' : ''}`}>
             <Link to="/dashboard" className='menuLink flex'>
                 <IoMdSpeedometer className='icon'/>
                 <span className="smallTex">
@@ -39,7 +52,7 @@ const Sidebar = () => {
             </Link>
           </li>
 
-          <li className="listItem">
+          <li className={`listItem ${isActive('/dashboard/realtime') ? 'active' : ''}`}>
              <Link to="/dashboard/realtime" className='menuLink flex'>
                 <MdDeliveryDining  className='icon'/>
                 <span className="smallTex">
@@ -94,54 +107,54 @@ const Sidebar = () => {
 
         <ul className="menuLists grid">
 
-          <li className="listItem">
+          <li className={`listItem ${isActive('/dashboard/waste-category-table') ? 'active' : ''}`}>
             <Link to="/dashboard/waste-category-table" className='menuLink flex'>
-                <MdOutlinePermContactCalendar className='icon'/>
+                <FaRecycle className='icon'/>
                 <span className="smallTex">
                   Phân loại rác
                 </span>
             </Link>
           </li>
 
-          <li className="listItem">
+          <li className={`listItem ${isActive('/dashboard/waste-table') ? 'active' : ''}`}>
             <Link to="/dashboard/waste-table" className='menuLink flex'>
-                <MdOutlinePermContactCalendar className='icon'/>
+                <GiNuclearWaste className='icon'/>
                 <span className="smallTex">
                   Rác thải
                 </span>
             </Link>
           </li>
 
-          <li className="listItem">
+          <li className={`listItem ${isActive('/dashboard/model-table') ? 'active' : ''}`}>
             <Link to="/dashboard/model-table" className='menuLink flex'>
-                <BsCreditCard2Front className='icon'/>
+                <BsClipboardData  className='icon'/>
                 <span className="smallTex">
                   Mô hình
                 </span>
             </Link>
           </li>
 
-          <li className="listItem">
+          <li className={`listItem ${isActive('/dashboard/camera') ? 'active' : ''}`}>
             <Link to="/dashboard/camera" className='menuLink flex'>
-                <BsCreditCard2Front className='icon'/>
+                <MdOutlineCameraswitch   className='icon'/>
                 <span className="smallTex">
                   Camera
                 </span>
             </Link>
           </li>
 
-          <li className="listItem">
+          <li className={`listItem ${isActive('/dashboard/process-video') ? 'active' : ''}`}>
             <Link to="/dashboard/process-video" className='menuLink flex'>
-                <BsCreditCard2Front className='icon'/>
+                <RiFileVideoLine  className='icon'/>
                 <span className="smallTex">
                   Quản lý video
                 </span>
             </Link>
           </li>
 
-          <li className="listItem">
+          <li className={`listItem ${isActive('/dashboard/details-process-waste') ? 'active' : ''}`}>
             <Link to="/dashboard/details-process-waste" className='menuLink flex'>
-                <BsCreditCard2Front className='icon'/>
+                <VscServerProcess ess  className='icon'/>
                 <span className="smallTex">
                   Quản lý xử lý rác
                 </span>
@@ -152,9 +165,9 @@ const Sidebar = () => {
       </div>
       
       <div className='logoutDiv'>
-        <button type='submit' className='btn flex'>
+        <button type='button' className='btn flex' onClick={handleLogOut}>
           <BsArrowLeftShort className='icon'/>
-          <span>Log Out</span>
+          <span>Đăng xuất</span>
         </button>
       </div>
 
@@ -164,10 +177,10 @@ const Sidebar = () => {
           <div className="circle1"></div>
           <div className="circle2"></div>
 
-          <h3>Help Center</h3>
-          <p>Having trouble in Planti, please contact us from for more questions.</p>
-          
-          <button className='btn'>Go to help center</button>
+          <h3>Hỗ Trợ Quản Trị</h3>
+          <p>Cần hỗ trợ khi quản lý hệ thống? Liên hệ để được trợ giúp chi tiết.</p>
+
+          <button className='btn'>Truy cập hỗ trợ quản trị</button>
         </div>
       </div>
     </div>

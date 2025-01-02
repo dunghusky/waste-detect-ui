@@ -50,7 +50,7 @@ const Login = () => {
         <video src={video} autoPlay muted loop></video>
 
         <div className="textDiv">
-          <h2 className='title'>Rác Được Phân Đúng Loại, Trái Đất Thêm Xanh Tươi</h2>
+          <h2 className='title'>Rác Được Phân Đúng Loại, <br />Trái Đất Thêm Xanh Tươi</h2>
           <p>Chung Tay Giữ Môi Trường Xanh!</p>
         </div>
 
