@@ -43,7 +43,8 @@
         .searchBar{
             padding: 1rem 2rem;
             background: var(--whiteColor);
-            border-radius: 5px;
+            width: 300px;
+            border-radius: 10px;
             gap: 1rem;
             box-shadow: 0 2px 4px var(--inputColor);
 
@@ -54,6 +55,7 @@
             }
 
             .icon{
+                margin-left: 30px;
                 color: var(--textColor);
                 &:hover{
                     color: var(--PrimaryColor);
