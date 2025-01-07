@@ -61,17 +61,13 @@
   align-items: center;
   gap: 15px;
 }
-.datatable .cellAction .viewButton {
-  padding: 2px 5px;
-  border-radius: 5px;
-  color: darkblue;
-  border: 1px dotted rgba(0, 0, 139, 0.596);
-  cursor: pointer;
-}
-.datatable .cellAction .deleteButton {
-  font-size: 1.5rem;
+.datatable .cellAction .deleteButton .icon {
+  font-size: 2rem;
   padding: 5px 5px;
   border-radius: 5px;
-  color: rgb(241, 36, 36);
+  color: gray;
   cursor: pointer;
+}
+.datatable .cellAction .deleteButton .icon:hover {
+  color: green;
 }/*# sourceMappingURL=Table_WasteCategory.css.map */
