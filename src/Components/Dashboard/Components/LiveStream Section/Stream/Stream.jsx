@@ -12,7 +12,7 @@ const Stream = () => {
   const [error, setError] = useState(null); // Trạng thái lỗi
   const [streamUrl, setStreamUrl] = useState(null); // URL của video stream
   const navigate = useNavigate();
-  const fixedStreamUrl = "http://52.88.216.148:8080/api/v1/stream/video_feed"; //"http://127.0.0.1:8000"; http://52.88.216.148:8000//
+  const fixedStreamUrl ="https://waste-detect.mekongai.com/api/v1/stream/video_feed"; //"http://127.0.0.1:8000"; http://52.88.216.148:8000//
   // const navigate = useNavigate();
 
   const handleStartStream = async () => {
