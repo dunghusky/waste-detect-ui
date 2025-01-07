@@ -11,24 +11,24 @@ const Top = () => {
   return (
     <div className='topSection'>
       <div className="headerSection flex">
-        <div className="title">
-          <h1>Welcome to Pranti.</h1>
-          <p>Hello IsraTech, Welcome back!</p>
-        </div>
-
-        <div className="searchBar flex">
-          <input type="text" placeholder='Search Dashboard' />
-          <BiSearchAlt className='icon'/>
-        </div>
-
-        <div className="adminDiv flex">
-          <TbMessageDots className='icon'/>
-          <IoNotificationsOutline className='icon'/>
-          <div className="adminImage">
-            <img src={img} alt="Admin Image" />
-          </div>
-        </div>
-      </div>
+              <div className="title">
+                <h1>Chào mừng bạn đến với RevoWaste.</h1>
+                <p>Xin chào Dung, mừng bạn quay trở lại!</p>
+              </div>
+      
+              <div className="searchBar flex">
+                <input type="text" placeholder='Tìm kiếm' />
+                <BiSearchAlt className='icon'/>
+              </div>
+      
+              <div className="adminDiv flex">
+                <TbMessageDots className='icon'/>
+                <IoNotificationsOutline className='icon'/>
+                <div className="adminImage">
+                  <img src={img} alt="Admin Image" />
+                </div>
+              </div>
+            </div>
     </div>
   )
 }

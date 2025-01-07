@@ -1,3 +1,27 @@
+:root{
+    //Dashboard 
+    --PrimaryColor: hsl(94, 59%, 35%);
+    --textColor: hsl(240, 1%, 48%)
+
+    //Login
+    --primaryColor: hsl(94, 55%, 56%);
+    --hoverColor: #bdf094;
+    --paleGreen: hsl(96, 75%, 89%);
+    --whiteColor: hsl(0, 0%, 100%);
+    --blackColor: hsl(0, 0%, 18%);
+    --greyText: rgb(190, 190, 190);
+    --bgColor: hsl(220, 10%, 94%);
+    --inputColor: hsl(330, 12%, 97%);
+
+    --biggestFontSize: 2.5rem;
+    --h1FontSize: 1.5rem;
+    --h2FontSize: 1.25rem;
+    --h3FontSize: 1rem;
+    --normalFontSize: .938rem;
+    --smallFontSize: .813rem;
+    --smallestFontSize: .75rem;
+}
+
 .datatable {
   height: 600px;
   width: 100%;
@@ -12,16 +36,39 @@
     align-items: center;
     justify-content: space-between;
 
-    .link{
-      text-decoration: none;
-      color: green;
-      font-size: 16px;
-      font-weight: 400;
-      border: 1px solid green;
-      padding: 5px;
-      border-radius: 5px;
-      cursor: pointer;
-    }
+    .btn{
+            background: var(--PrimaryColor);
+            width: auto;
+            height: 40px;
+            justify-content: center;
+            // padding: 10px;
+            padding: 0 15px;
+            align-items: center;
+            color: var(--whiteColor);
+            justify-content: center;
+            font-size: 15px;
+            gap: .5rem;
+            transition: .3s ease;
+
+            .icon{
+                margin-right: 5px;
+                background: var(--whiteColor);
+                font-size: 1.5rem;
+                color: var(--PrimaryColor);
+                border-radius: 50%;
+                transition: .3s ease;
+            }
+
+            &:hover{
+                background: var(--primaryColor);
+                color: var(--blackColor);
+
+                .icon{
+                    color: var(--blackColor);
+                    transform: translateX(5px);
+                }
+            }
+        }
   }
 
   .cellWithImg {
@@ -43,45 +90,22 @@
     background: hsl(0, 0%, 100%);
     box-shadow: 0 5px 5px rgb(214, 223, 213);
 }
-
-  .cellWithStatus {
-    padding: 5px;
-    border-radius: 5px;
-
-    &.active {
-      background-color: rgba(0, 128, 0, 0.05);
-      color: green;
-    }
-    &.pending {
-      background-color: rgba(255, 217, 0, 0.05);
-      color: goldenrod;
-    }
-    &.passive {
-      background-color: rgba(255, 0, 0, 0.05);
-      color: crimson;
-    }
-  }
-
   .cellAction {
     display: flex;
     align-items: center;
-    gap: 15px;
+    gap: 1px;
+    margin-top: 7px;
 
-    .viewButton {
-      padding: 2px 5px;
-      border-radius: 5px;
-      color: darkblue;
-      border: 1px dotted rgba(0, 0, 139, 0.596);
-      cursor: pointer;
-    }
-    
-    .deleteButton {
-      font-size: 1.5rem;
+    .deleteButton .icon {
+      font-size: 2rem;
       padding: 5px 5px;
       border-radius: 5px;
-      color: rgb(241, 36, 36);
-      // border: 1px dotted rgba(220, 20, 60, 0.6);
+      color: gray;
       cursor: pointer;
+
+      &:hover{
+        color: green;
+      }
     }
   }
 }

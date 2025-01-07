@@ -4,7 +4,7 @@ import { MdDelete } from "react-icons/md";
 import { useState, useEffect} from "react";
 import { Autocomplete, TextField } from "@mui/material";
 
-import { fetchWasteRows } from "../../Components/Dashboard/Components/DataManagement/WasteCategory/TableWasteCategory/DataTWSource";
+import { fetchWasteRowsCategory } from "../../Components/Dashboard/Components/DataManagement/WasteCategory/TableWasteCategory/DataTWSource";
 
 export const ModalWaste = ({isOpen, handleCloseModal, handleOkModal, data, isEditMode, setData,isDataEdit}) => {
     const [options, setOptions] = useState([]); // Khai báo options state
@@ -18,7 +18,7 @@ export const ModalWaste = ({isOpen, handleCloseModal, handleOkModal, data, isEdi
     useEffect(() => {
         const fetchCategories = async () => {
             try {
-                const wasteRows = await fetchWasteRows();
+                const wasteRows = await fetchWasteRowsCategory();
                 const categories = wasteRows.map((waste) => ({
                         value: waste.id_category,
                         label: waste.category_name,
@@ -88,14 +88,14 @@ export const ModalWaste = ({isOpen, handleCloseModal, handleOkModal, data, isEdi
     return(
         <>
         <Modal 
-            title={isEditMode ? "Update Waste" :"Add New Waste"}
+            title={isEditMode ? "Cập nhật rác thải" :"Thêm mới rác thải"}
             open={isOpen} 
             onCancel={handleCloseModal} 
             onOk={handleOkModal}
             width={1000}
             height={1000}
             okButtonProps={{disabled:isDataEdit}}
-            okText={isEditMode ? "Update Waste" : "Add New Waste"}
+            okText={isEditMode ? "Cập nhật" : "Thêm mới"}
         >
             <div className="grid grid-cols-12">
                <div className="col-span-4">

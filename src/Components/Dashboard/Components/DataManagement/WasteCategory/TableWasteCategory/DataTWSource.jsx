@@ -46,7 +46,7 @@ export const wasteColumns = [
 ];
 
 // Hàm lấy dữ liệu từ API
-export const fetchWasteRows = async () => {
+export const fetchWasteRowsCategory = async () => {
   try {
     const response = await getWasteCategoryDataAPI();
     if (response.status === 200) {

@@ -9,6 +9,7 @@ import ModelBody from '../Dashboard/Components/DataManagement/Model/ModelBody'
 import CameraBody from '../Dashboard/Components/DataManagement/Camera/CameraBody'
 import VideoBody from '../Dashboard/Components/DataManagement/VideoProcess/VideoBody'
 import DetailsBody from '../Dashboard/Components/DataManagement/DetailsWastesProcess/DetailsBody'
+import ImageBody from '../Dashboard/Components/Image/ImageStream/ImageStream'
 import { Routes, Route } from 'react-router-dom';
 
 function Dashboard() {
@@ -26,6 +27,7 @@ function Dashboard() {
           <Route path="camera" element={<CameraBody />} />
           <Route path="process-video" element={<VideoBody />} />
           <Route path="details-process-waste" element={<DetailsBody />} />
+          <Route path="image" element={<ImageBody />} />
         </Routes>
     </div>
    </div>

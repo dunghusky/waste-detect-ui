@@ -24,11 +24,11 @@ const VideoStream = () => {
 
   return (
     <div className="w-[100%] h-[95%]">
-      <div className="w-full h-full flex items-center justify-center bg-red-500">
+      <div className="w-full h-full flex items-center justify-center  bg-gray-200">
         {videoUrl ? (
           <video className="w-[100%] h-full rounded-md" src={videoUrl} autoPlay controls />
         ) : (
-          <p className="text-white">{error || "Đang tải video, vui lòng đợi..."}</p>
+          <p className="text-green-500">{error || "Đang tải video, vui lòng đợi..."}</p>
         )}
       </div>
     </div>

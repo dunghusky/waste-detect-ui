@@ -7,9 +7,9 @@ import { Link, useLocation  } from 'react-router-dom';
 import { IoMdSpeedometer } from "react-icons/io";
 import { MdDeliveryDining } from "react-icons/md";
 import { MdOutlineExplore } from "react-icons/md";
-import { BsTrophy } from "react-icons/bs";
+// import { BsTrophy } from "react-icons/bs";
 import { AiOutlinePieChart } from "react-icons/ai";
-import { BiTrendingUp } from "react-icons/bi";
+// import { BiTrendingUp } from "react-icons/bi";
 import { BsQuestionCircle } from "react-icons/bs";
 import { BsArrowLeftShort } from "react-icons/bs";
 import { FaRecycle } from "react-icons/fa";
@@ -65,19 +65,19 @@ const Sidebar = () => {
             <Link to="/dashboard/video" className='menuLink flex'>
                 <MdOutlineExplore className='icon'/>
                 <span className="smallTex">
-                  Explore
+                  Video
                 </span>
             </Link>
           </li>
 
-          <li className="listItem">
+          {/* <li className="listItem">
             <a href="#" className='menuLink flex'>
                 <BsTrophy className='icon'/>
                 <span className="smallTex">
                   Products
                 </span>
             </a>
-          </li>
+          </li> */}
 
           <li className="listItem">
             <a href="#" className='menuLink flex'>
@@ -88,14 +88,23 @@ const Sidebar = () => {
             </a>
           </li>
 
-          <li className="listItem">
+          <li className={`listItem ${isActive('/dashboard/image') ? 'active' : ''}`}>
+            <Link to="/dashboard/image" className='menuLink flex'>
+                <AiOutlinePieChart  className='icon'/>
+                <span className="smallTex">
+                  Hình ảnh
+                </span>
+            </Link>
+          </li>
+
+          {/* <li className="listItem">
             <a href="#" className='menuLink flex'>
                 <BiTrendingUp  className='icon'/>
                 <span className="smallTex">
                   Trends
                 </span>
             </a>
-          </li>
+          </li> */}
 
         </ul>
       </div>

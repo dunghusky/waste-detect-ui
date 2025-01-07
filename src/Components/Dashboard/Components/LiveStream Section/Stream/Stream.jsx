@@ -2,6 +2,8 @@ import { useState} from "react";
 // import Hls from "hls.js";
 import { stopStreamAPI } from '../../../../../Services/userServices';
 import { useNavigate } from 'react-router-dom'
+import '../Stream/Stream.css'
+// import { BsArrowLeftShort } from "react-icons/bs";
 
 const Stream = () => {
   //Usetate
@@ -10,7 +12,7 @@ const Stream = () => {
   const [error, setError] = useState(null); // Trạng thái lỗi
   const [streamUrl, setStreamUrl] = useState(null); // URL của video stream
   const navigate = useNavigate();
-  const fixedStreamUrl = "http://52.88.216.148:8000/api/v1/stream/video_feed"; //"http://127.0.0.1:8000"; http://52.88.216.148:8000//
+  const fixedStreamUrl = "http://52.88.216.148:8080/api/v1/stream/video_feed"; //"http://127.0.0.1:8000"; http://52.88.216.148:8000//
   // const navigate = useNavigate();
 
   const handleStartStream = async () => {
@@ -20,7 +22,6 @@ const Stream = () => {
     try {
       setStreamUrl(fixedStreamUrl); // Sử dụng URL cố định
       console.log('Stream started successfully with fixed URL');
-      // setStreamUrl("http://127.0.0.1:8000/api/v1/stream/video_feed"); // Cập nhật URL stream
     } catch (err) {
       console.error('Error starting stream:', err);
       setError('Không thể bắt đầu phân loại.');
@@ -66,14 +67,15 @@ const Stream = () => {
         )}
       </div>
 
-      <div className="bottom flex gap-2 w-full justify-center items-center">
-       <button type='button' className='btn flex' onClick={handleStartStream} disabled={loadingStart || loadingStop}> 
+      <div className="mt-5 flex gap-8 w-full justify-center items-center">
+       <button type='button' className='btnstream flex' onClick={handleStartStream} disabled={loadingStart || loadingStop}> 
+        {/* <BsArrowLeftShort className='icon'/>   */}
         <span>{loadingStart ? 'Đang xử lý...' : 'Bắt đầu phân loại'}</span>
        </button>
-       <button type='button' className='btn flex'  onClick={handleStopStream} disabled={loadingStop || loadingStart || streamUrl === null}>
+       <button type='button' className='btnstream flex'  onClick={handleStopStream} disabled={loadingStop || loadingStart || streamUrl === null}>
         <span>{loadingStop ? 'Đang xử lý...' : 'Dừng phân loại'}</span>
        </button>
-       <button type='button' className='btn flex' onClick={handleViewVideo}>
+       <button type='button' className='btnstream flex' onClick={handleViewVideo}>
         <span>Xem lại</span>
        </button>
       </div>

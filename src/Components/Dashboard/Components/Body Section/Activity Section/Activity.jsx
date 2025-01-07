@@ -28,7 +28,7 @@ const Activity = () => {
       <div className="heading flex">
         <h1>Rác thải</h1>
         <button type='button' className="btn flex" onClick={handleSeeAll}>
-          See All
+          Xem thêm
           <BsArrowRightShort className='icon'/>
         </button>
       </div>

@@ -1,8 +1,6 @@
 :root{
     //Dashboard 
     --PrimaryColor: hsl(94, 59%, 35%);
-    --btnColor: hsl(94, 96%, 29%);
-    --btn1Color: hsl(134, 100%, 48%);
     --textColor: hsl(240, 1%, 48%)
 
     //Login
@@ -24,19 +22,27 @@
     --smallestFontSize: .75rem;
 }
 
-.btnstream{
-    height: 40px;
-    border: none;
-    outline: none;
-    cursor: pointer;
-    border-radius: 8px;
-    padding: 1rem 1rem;
-    color: var(--btnColor);
-    box-shadow: 0 2px 4px var(--inputColor);
-
-    &:hover{
-        color: var(--whiteColor);
-        background: var(--PrimaryColor);
+.streamSection{
+    .videoDiv{
+        position: relative;
+        display: flex;
+        flex-basis: 80%;
+        width: 90%;
+        background-color: red;
+        justify-content: center;
+        padding: 1.5rem;
+        border-radius: 1rem;
+        overflow: hidden;
+        // video{
+        //     // position: absolute;
+        //     height: 100%;
+        //     width: 100%;
+        //     object-fit: cover;
+        //     top: 0;
+        //     bottom: 0;
+        //     left: 0;
+        //     right: 0;
+        // }
     }
 }
 
