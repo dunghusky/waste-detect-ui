@@ -3,7 +3,7 @@
   width: 100%;
   padding: 20px;
 
-  .datatableTitle{
+  .datatableTitle {
     width: 100%;
     font-size: 24px;
     color: gray;
@@ -12,7 +12,7 @@
     align-items: center;
     justify-content: space-between;
 
-    .link{
+    .link {
       text-decoration: none;
       color: green;
       font-size: 16px;
@@ -37,12 +37,12 @@
     }
   }
 
-  .datagrid{
+  .datagrid {
     border-radius: 10px;
     overflow: hidden;
     background: hsl(0, 0%, 100%);
     box-shadow: 0 5px 5px rgb(214, 223, 213);
-}
+  }
 
   .cellWithStatus {
     padding: 5px;
@@ -74,7 +74,7 @@
       border: 1px dotted rgba(0, 0, 139, 0.596);
       cursor: pointer;
     }
-    
+
     .deleteButton {
       font-size: 1.5rem;
       padding: 5px 5px;
