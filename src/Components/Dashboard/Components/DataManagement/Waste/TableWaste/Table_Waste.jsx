@@ -3,6 +3,7 @@ import { DataGrid } from "@mui/x-data-grid";
 import { wasteColumns, fetchWasteRows } from "./DataTWSource";
 import { FaTrash } from "react-icons/fa";
 import { HiPencilAlt } from "react-icons/hi";
+import { GoPlus } from "react-icons/go";
 // import { faTrashXmark } from '@fortawesome/free-solid-svg-icons';
 import { useState, useEffect } from "react";
 import {deleteWasteDataAPI} from "../../../../../../Services/deleteData";
@@ -72,17 +73,17 @@ const Datatable = () => {
       align: "center", headerAlign: "center",
       renderCell: (params) => {
         return (
-          <div className="cellAction flex items-center justify-center w-full">
-            <div className="deleteButton "
+          <div className="cellAction flex items-center justify-center w-full ">
+            <div className="deleteButton"
             onClick={() => handleOpenModalEditWaste(params.row)}
             >
-                <HiPencilAlt />
+                <HiPencilAlt className='icon' />
             </div>
             <div
               className="deleteButton"
               onClick={() => handleDelete(params.row.id_waste)}
             >
-              <FaTrash />
+              <FaTrash className='icon' />
             </div>
           </div>
         );
@@ -230,8 +231,9 @@ const Datatable = () => {
     <div className="datatable">
       <div className="datatableTitle">
         Danh mục rác thải
-        <Button onClick={handleOpenModalAddNew} className="link">
-          Thêm mới
+        <Button onClick={handleOpenModalAddNew} className="btn flex">
+          <span>Thêm mới</span>
+          <GoPlus className='icon'/>
         </Button>
       </div>
       <DataGrid

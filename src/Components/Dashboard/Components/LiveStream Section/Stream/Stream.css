@@ -1,5 +1,7 @@
 :root {
   --PrimaryColor: hsl(94, 59%, 35%);
+  --btnColor: hsl(94, 96%, 29%);
+  --btn1Color: hsl(134, 100%, 48%);
   --textColor: hsl(240, 1%, 48%)
   //Login
   --primaryColor: hsl(94, 55%, 56%);
@@ -19,14 +21,17 @@
   --smallestFontSize: .75rem;
 }
 
-.streamSection .videoDiv {
-  position: relative;
-  display: flex;
-  flex-basis: 80%;
-  width: 90%;
-  background-color: red;
-  justify-content: center;
-  padding: 1.5rem;
-  border-radius: 1rem;
-  overflow: hidden;
+.btnstream {
+  height: 40px;
+  border: none;
+  outline: none;
+  cursor: pointer;
+  border-radius: 8px;
+  padding: 1rem 1rem;
+  color: var(--btnColor);
+  box-shadow: 0 2px 4px var(--inputColor);
+}
+.btnstream:hover {
+  color: var(--whiteColor);
+  background: var(--PrimaryColor);
 }/*# sourceMappingURL=Stream.css.map */

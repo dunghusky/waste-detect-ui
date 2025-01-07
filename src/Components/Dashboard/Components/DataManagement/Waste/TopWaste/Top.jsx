@@ -12,12 +12,12 @@ const Top = () => {
     <div className='topSection'>
       <div className="headerSection flex">
         <div className="title">
-          <h1>Welcome to Pranti.</h1>
-          <p>Hello IsraTech, Welcome back!</p>
+          <h1>Chào mừng bạn đến với RevoWaste.</h1>
+          <p>Xin chào Dung, mừng bạn quay trở lại!</p>
         </div>
 
         <div className="searchBar flex">
-          <input type="text" placeholder='Search Dashboard' />
+          <input type="text" placeholder='Tìm kiếm' />
           <BiSearchAlt className='icon'/>
         </div>
 

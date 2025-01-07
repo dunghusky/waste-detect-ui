@@ -12,7 +12,7 @@
     --greyText: rgb(190, 190, 190);
     --bgColor: hsl(220, 10%, 94%);
     --inputColor: hsl(330, 12%, 97%);
-    --itemCardColor: hsl(120, 5%, 88%);
+    --itemCardColor: hsl(0, 0%, 93%);
     --itemCardHover: hsl(120, 27%, 87%);
 
     --biggestFontSize: 2.5rem;
@@ -52,7 +52,8 @@
         margin: 1rem 0;
         gap: 1rem;
         flex-wrap: wrap;
-        justify-content: space-between;
+        display: flex;
+        justify-content: center;
 
         .singleItem{
             position: relative;
@@ -63,6 +64,7 @@
             flex-direction: column;
             padding: 1rem;
             border-radius: 10px;
+            margin: 0 1.5rem;
             background: var(--itemCardColor);
 
             &:hover{
@@ -118,6 +120,8 @@
                 box-shadow: 0 2px 4px var(--inputColor);
                 
                 .users{
+                    display: flex; /* Hiển thị hình ảnh theo hàng ngang */
+                    gap: 0.1rem; /* Khoảng cách giữa các hình ảnh */
                     padding-right: 1rem;
                     border-right: 2px solid var(--greyText);
 

@@ -1,8 +1,9 @@
 import "../TableWasteCategory/Table_WasteCategory.css";
 import { DataGrid } from "@mui/x-data-grid";
-import { wasteColumns, fetchWasteRows } from "./DataTWSource";
+import { wasteColumns, fetchWasteRowsCategory } from "./DataTWSource";
 import { FaTrash } from "react-icons/fa";
 import { HiPencilAlt } from "react-icons/hi";
+import { GoPlus } from "react-icons/go";
 // import { faTrashXmark } from '@fortawesome/free-solid-svg-icons';
 import { useState, useEffect } from "react";
 import {deleteWasteCategoryDataAPI} from "../../../../../../Services/deleteData";
@@ -46,7 +47,7 @@ const Datatable = () => {
   };
 
   const fetchData = async () => {
-    const rows = await fetchWasteRows();
+    const rows = await fetchWasteRowsCategory();
     setData(
         rows.map((item, index) => ({
             ...item,
@@ -76,13 +77,13 @@ const Datatable = () => {
             <div className="deleteButton "
             onClick={() => handleOpenModalEditWaste(params.row)}
             >
-                <HiPencilAlt />
+                <HiPencilAlt className="icon"/>
             </div>
             <div
               className="deleteButton"
               onClick={() => handleDelete(params.row.id_category)}
             >
-              <FaTrash />
+              <FaTrash className="icon"/>
             </div>
           </div>
         );
@@ -228,8 +229,9 @@ const Datatable = () => {
     <div className="datatable">
       <div className="datatableTitle">
         Danh mục phân loại rác
-        <Button onClick={handleOpenModalAddNew} className="link">
-          Thêm mới
+        <Button onClick={handleOpenModalAddNew} className="btn flex">
+          <span>Thêm mới</span>
+          <GoPlus className='icon'/>
         </Button>
       </div>
       <DataGrid
