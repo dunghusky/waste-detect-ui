@@ -82,13 +82,13 @@ const Datatable = () => {
             <div className="deleteButton "
             onClick={() => handleOpenModalEditWaste(params.row)}
             >
-                <HiPencilAlt />
+                <HiPencilAlt className="icon"/>
             </div>
             <div
               className="deleteButton"
               onClick={() => handleDelete(params.row.id_video, params.row.id_waste)}
             >
-              <FaTrash />
+              <FaTrash className="icon"/>
             </div>
           </div>
         );

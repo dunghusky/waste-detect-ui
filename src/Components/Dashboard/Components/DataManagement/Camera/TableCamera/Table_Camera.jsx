@@ -11,6 +11,7 @@ import { ModalCamera } from "../../../../../../shared/modals/ModalCamera";
 
 import {addCameraDataAPI} from "../../../../../../Services/addData"
 import {updateCameraDataAPI} from "../../../../../../Services/updateData"
+import { GoPlus } from "react-icons/go";
 
 const Datatable = () => {
   const [data, setData] = useState([]);
@@ -76,13 +77,13 @@ const Datatable = () => {
             <div className="deleteButton "
             onClick={() => handleOpenModalEditWaste(params.row)}
             >
-                <HiPencilAlt />
+                <HiPencilAlt className="icon"/>
             </div>
             <div
               className="deleteButton"
               onClick={() => handleDelete(params.row.id_camera)}
             >
-              <FaTrash />
+              <FaTrash className="icon"/>
             </div>
           </div>
         );
@@ -211,8 +212,9 @@ const Datatable = () => {
     <div className="datatable">
       <div className="datatableTitle">
         Danh mục camera
-        <Button onClick={handleOpenModalAddNew} className="link">
-          Thêm mới
+        <Button onClick={handleOpenModalAddNew} className="btn flex">
+          <span>Thêm mới</span>
+          <GoPlus className="icon" />
         </Button>
       </div>
       <DataGrid
@@ -226,14 +228,15 @@ const Datatable = () => {
         checkboxSelection
       />
       <ModalCamera
-          {...{isOpen: isOpenModalWaste,
+        {...{
+          isOpen: isOpenModalWaste,
           setIsOpen: setIsOpenModalWaste,
           handleCloseModal: handleCloseModalAddNew,
           handleOkModal: handleSubmitFormWaste,
           data: waste,
           isEditMode,
           setData: setWaste,
-          isDataEdit
+          isDataEdit,
         }}
       />
     </div>
