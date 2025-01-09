@@ -5,11 +5,12 @@ import react from "@vitejs/plugin-react";
 export default defineConfig({
   plugins: [react()],
   server: {
+    port: 3000,
     proxy: {
       "/api": {
-        target: "https://waste-detect.mekongai.com", //http://54.160.228.250:6060',// 'http://127.0.0.1:8000',//'http://52.88.216.148:8000',  // địa chỉ và cổng backend
+        target: "http://52.88.216.148:8080",
         changeOrigin: true,
-        // rewrite: (path) => path.replace(/^\/api/, '')  // loại bỏ "/api" prefix trong request
+        secure: true,
       },
     },
   },
