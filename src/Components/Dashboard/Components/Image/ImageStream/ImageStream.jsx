@@ -1,7 +1,7 @@
 import { Select, Slider } from "antd";
+import TextArea from "antd/es/input/TextArea";
 import { useState } from "react";
 import { MdFileUpload } from "react-icons/md";
-
 // const JsonViewer = ({ jsonString }) => {
 //   // Chuyển chuỗi JSON thành đối tượng JSON
 //   const jsonData = JSON.parse(jsonString);
@@ -26,6 +26,31 @@ import { MdFileUpload } from "react-icons/md";
 const ImageStream = () => {
   const [inputValueCoonfidence, setInputValueCoonfidence] = useState(50);
   const [inputValueOverlap, setInputValueOverlap] = useState(50);
+  // const [inputValueJson, setInputValueJson] = useState("abc");
+  // const [imageOutput, setImageOutput] = useState(
+  //   "../../../../../../public/img/anh.jpg"
+  // );
+  const [imageInput, setImageInput] = useState();
+  const [isLoadingUploadImage, setIsLoadingUploadImage] = useState(false);
+
+  const handleUploadImage = (e) => {
+    if (e.target.files && e.target.files.length > 0) {
+      setImageInput(e.target.files[0]);
+      //gọi api ở đây
+      handleGetAPIUploadImage(e.target.files[0]);
+    }
+  };
+
+  const handleGetAPIUploadImage = (fileUpload) => {
+    setIsLoadingUploadImage(true);
+    try {
+      setImageInput("");
+      //nếu trả về thì set loading thành false
+    } catch (e) {
+      setIsLoadingUploadImage(false);
+      console.log(e);
+    }
+  };
 
   const optionSelect = [
     { value: "a", label: "a" },
@@ -51,7 +76,12 @@ const ImageStream = () => {
           <div className="border border-dashed bg-white border-slate-200 rounded-md p-8 flex flex-col items-center justify-center">
             <p className="font-normal text-xs mb-2">Drop file here or</p>
             <div>
-              <input type="file" id="upload-image" className="hidden" />
+              <input
+                type="file"
+                id="upload-image"
+                className="hidden"
+                onChange={(e) => handleUploadImage(e)}
+              />
               <label
                 htmlFor="upload-image"
                 className="border border-slate-200 rounded-md px-4 py-2 bg-white flex items-center gap-2 text-xs hover:text-sky-500 cursor-pointer hover:shadow-md"
@@ -61,8 +91,25 @@ const ImageStream = () => {
               </label>
             </div>
           </div>
+          {imageInput && (
+            <img
+              src={URL.createObjectURL(imageInput)}
+              className="rounded-md h-[100px] w-fit"
+              alt="input-image"
+            />
+          )}
         </div>
-        <div className="w-[50%] p-5 rounded-lg border border-slate-200 shadow-sm bg-white h-full"></div>
+        <div className="w-[50%] p-5 rounded-lg border border-slate-200 shadow-sm bg-white h-full flex items-center justify-center">
+          {isLoadingUploadImage
+            ? "Loading..."
+            : imageOutput && (
+                <img
+                  src={imageOutput}
+                  className="h-full w-fit rounded-md"
+                  alt="output-image"
+                />
+              )}
+        </div>
         <div className="w-[25%] p-4 rounded-lg border border-slate-200 shadow-sm bg-white h-full flex flex-col gap-4">
           <div className="border border-slate-200 rounded-lg shadow-sm p-4 w-full">
             <label>Coonfidence Threshold: {inputValueCoonfidence}%</label>
@@ -90,7 +137,9 @@ const ImageStream = () => {
               <lebel>100%</lebel>
             </div>
           </div>
-          <div className="border border-slate-200 rounded-lg shadow-sm p-4 flex-1 w-full"></div>
+          <div className="border border-slate-200 rounded-lg shadow-sm p-4 flex-1 w-full">
+            <TextArea rows={2} value={inputValueJson} />
+          </div>
         </div>
       </div>
     </div>
