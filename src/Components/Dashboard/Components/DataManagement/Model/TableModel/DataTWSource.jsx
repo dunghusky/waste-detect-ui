@@ -1,7 +1,12 @@
 import { getModelCategoryDataAPI } from "../../../../../../Services/getData";
 
 export const wasteColumns = [
-  { field: "stt", headerName: "STT", width: 70, align: "center", headerAlign: "center",
+  {
+    field: "stt",
+    headerName: "STT",
+    width: 70,
+    align: "center",
+    headerAlign: "center",
     // renderCell: (params) => {
     //   return (
     //     <div className="flex items-center justify-center w-full">
@@ -9,32 +14,60 @@ export const wasteColumns = [
     //     </div>
     //   );
     // },
-   },
-    {
-      field: "model_name",
-      headerName: "Tên mô hình",
-      width: 200, align: "center", headerAlign: "center",
-      // renderCell: (params) => {
-      //   return (
-      //     <div className="cellWithImg">
-      //       <img className="cellImg" src={params.row.img} alt="avatar" />
-      //       {params.row.category_name}
-      //     </div>
-      //   );
-      // },
-    },
+  },
+  {
+    field: "model_name",
+    headerName: "Tên mô hình",
+    width: 200,
+    align: "center",
+    headerAlign: "center",
+    // renderCell: (params) => {
+    //   return (
+    //     <div className="cellWithImg">
+    //       <img className="cellImg" src={params.row.img} alt="avatar" />
+    //       {params.row.category_name}
+    //     </div>
+    //   );
+    // },
+  },
   {
     field: "link",
     headerName: "Link",
     width: 320,
-    align: "center", headerAlign: "center",
+    align: "center",
+    headerAlign: "center",
+  },
+
+  {
+    field: "train",
+    headerName: "Trainning",
+    width: 250,
+    align: "center",
+    headerAlign: "center",
+  },
+
+  {
+    field: "img",
+    headerName: "Hình ảnh",
+    width: 250,
+    align: "center",
+    headerAlign: "center",
+  },
+
+  {
+    field: "date",
+    headerName: "Ngày thêm",
+    width: 250,
+    align: "center",
+    headerAlign: "center",
   },
 
   {
     field: "note",
     headerName: "Ghi chú",
     width: 250,
-    align: "center", headerAlign: "center",
+    align: "center",
+    headerAlign: "center",
   },
 ];
 
@@ -49,6 +82,9 @@ export const fetchWasteRows = async () => {
         model_name: item.tenMoHinh,
         link: item.duongDan,
         note: item.ghiChu,
+        img: item.img,
+        date: item.ngayThem,
+        train: item.ketQua,
       }));
     }
     return [];
